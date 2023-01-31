@@ -1,10 +1,7 @@
 import {render} from "react-dom";
-import {Counter} from "./components/Counter";
+import App from "./App";
 
 render(
-    <div>
-        Hello world
-        <Counter />
-    </div>,
+    <App />,
     document.getElementById("root")
 );
