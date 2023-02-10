@@ -5,8 +5,6 @@ export function classNames(rootClass: string,
                            modifiers: Modifiers,
                            additional: string[]): string {
 
-
-
     return [
         rootClass,
         ...additional,
