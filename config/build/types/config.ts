@@ -4,6 +4,7 @@ export interface BuildPaths {
     buildDir: string,
     entrypoint: string,
     htmlEntrypoint: string,
+    srcDirectory: string
 }
 
 export interface BuildOptions {
