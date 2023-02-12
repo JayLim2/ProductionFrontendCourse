@@ -6,6 +6,7 @@ import {classNames} from "shared/lib/classNames/classNames";
 import {AboutPage} from "pages/AboutPage";
 import {MainPage} from "pages/MainPage";
 import {AppRouter} from "app/providers/router";
+import {NavigationBar} from "widgets/NavigationBar";
 
 const App = () => {
 
@@ -15,8 +16,7 @@ const App = () => {
         <div className={classNames('app', {}, [theme])}>
             <button onClick={toggleTheme}>Toggle Theme</button>
 
-            <Link to={"/"}>Main Page</Link>
-            <Link to={"/about"}>About Page</Link>
+            <NavigationBar />
 
             <AppRouter />
         </div>
