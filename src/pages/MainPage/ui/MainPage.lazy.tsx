@@ -1,11 +1,11 @@
-import {lazy} from "react";
+import { lazy } from 'react'
 
-const MainPageLazy = lazy(() => new Promise((resolve) => {
-    // FIXME ONLY FOR LEARNING
-    setTimeout(() => {
-        // @ts-ignore
-        resolve(import("./MainPage"));
-    }, 1000);
-}));
+const MainPageLazy = lazy(async () => await new Promise((resolve) => {
+  // FIXME ONLY FOR LEARNING
+  setTimeout(() => {
+    // @ts-expect-error Because I don't know another way to do it
+    resolve(import('./MainPage'))
+  }, 1000)
+}))
 
-export default MainPageLazy;
+export default MainPageLazy

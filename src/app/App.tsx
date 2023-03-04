@@ -1,18 +1,15 @@
-import React, { Suspense } from 'react';
-import "app/styles/index.scss";
-import {useTheme} from "app/providers/ThemeProvider/lib/Theme/useTheme";
-import {classNames} from "shared/lib/classNames/classNames";
-import {AppRouter} from "app/providers/router";
-import {NavigationBar} from "widgets/NavigationBar";
-import {Sidebar} from "widgets/Sidebar";
-import {useTranslation} from "react-i18next";
-import {LanguageSwitcher} from "widgets/LanguageSwitcher/ui/LanguageSwitcher";
+import { type FC, Suspense } from 'react'
+import 'app/styles/index.scss'
+import { useTheme } from 'app/providers/ThemeProvider/lib/Theme/useTheme'
+import { classNames } from 'shared/lib/classNames/classNames'
+import { AppRouter } from 'app/providers/router'
+import { NavigationBar } from 'widgets/NavigationBar'
+import { Sidebar } from 'widgets/Sidebar'
 
-const App = () => {
+const App: FC<any> = () => {
+  const { theme } = useTheme()
 
-    const {theme} = useTheme();
-
-    return (
+  return (
         <div className={classNames('app', {}, [theme])}>
             <Suspense fallback="">
                 <NavigationBar/>
@@ -24,7 +21,7 @@ const App = () => {
                 </div>
             </Suspense>
         </div>
-    );
-};
+  )
+}
 
-export default App;
+export default App

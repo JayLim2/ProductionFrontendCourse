@@ -1,21 +1,22 @@
-import {classNames} from "shared/lib/classNames/classNames";
-import styles from './LanguageSwitcher.module.scss';
-import React from "react";
-import {useTranslation} from "react-i18next";
-import {ThemeButton, UxButton} from "shared/ui/UxButton/UxButton";
+import { classNames } from 'shared/lib/classNames/classNames'
+import styles from './LanguageSwitcher.module.scss'
+import { useTranslation } from 'react-i18next'
+import { ThemeButton, UxButton } from 'shared/ui/UxButton/UxButton'
+import { type FC } from 'react'
 
 interface LanguageSwitcherProps {
-    className?: string,
+  className?: string
 }
 
-export const LanguageSwitcher = ({className}: LanguageSwitcherProps) => {
-    const {t, i18n} = useTranslation();
+export const LanguageSwitcher: FC<LanguageSwitcherProps> = (props) => {
+  const { className } = props
+  const { t, i18n } = useTranslation()
 
-    const switchLanguage = () => {
-        i18n.changeLanguage(i18n.language === 'ru' ? 'en' : 'ru');
-    };
+  const switchLanguage = (): void => {
+    void i18n.changeLanguage(i18n.language === 'ru' ? 'en' : 'ru')
+  }
 
-    return (
+  return (
         <UxButton
             className={classNames(styles.LanguageSwitcher, {}, [className])}
             theme={ThemeButton.CLEAR}
@@ -23,5 +24,5 @@ export const LanguageSwitcher = ({className}: LanguageSwitcherProps) => {
         >
             {t('switchLanguageButton')}
         </UxButton>
-    );
-};
+  )
+}
