@@ -3,5 +3,6 @@
   "switchLanguageButton": "Русский",
   "mainPageLinkTitle": "Main Page",
   "aboutPageLinkTitle": "About us",
-  "toggleSidebarButton": "Expand/Collapse"
+  "toggleSidebarButton": "Expand/Collapse",
+  "loadingText": "Loading..."
 }

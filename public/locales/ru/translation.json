@@ -3,5 +3,6 @@
   "switchLanguageButton": "English",
   "mainPageLinkTitle": "Главная",
   "aboutPageLinkTitle": "О сайте",
-  "toggleSidebarButton": "Развернуть/Свернуть"
+  "toggleSidebarButton": "Развернуть/Свернуть",
+  "loadingText": "Загрузка..."
 }
