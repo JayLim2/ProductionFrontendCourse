@@ -20,6 +20,8 @@ export function buildPlugins (options: BuildOptions): webpack.WebpackPluginInsta
       __IS_DEV__: true
     }),
     new webpack.HotModuleReplacementPlugin(),
-    new ReactRefreshPlugin()
+    new ReactRefreshPlugin({
+      overlay: false
+    })
   ]
 }

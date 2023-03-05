@@ -26,8 +26,9 @@ module.exports = {
   rules: {
     '@typescript-eslint/semi': 'off',
     '@typescript-eslint/prefer-nullish-coalescing': 'off',
-    '@typescript-eslint/strict-boolean-expressions': 'warn',
+    '@typescript-eslint/strict-boolean-expressions': 'off',
     'react/jsx-props-no-spreading': 'warn',
-    'i18next/no-literal-string': ['error', {markupOnly: true, ignoreAttribute: ["to", "className"]}]
+    'i18next/no-literal-string': ['error', {markupOnly: true, ignoreAttribute: ["to", "className"]}],
+    '@typescript-eslint/space-before-function-paren': 'off'
   }
 }
