@@ -20,10 +20,15 @@ export const Sidebar: FC<SidebarProps> = (props) => {
   }
 
   return (
-        <div className={classNames(styles.Sidebar, {
-          [styles.isCollapsed]: isCollapsed
-        }, [className])}>
-            <UxButton onClick={onToggleCollapsed}>
+        <div data-testid='sidebar'
+             className={classNames(styles.Sidebar, {
+               [styles.isCollapsed]: isCollapsed
+             }, [className])}
+        >
+            <UxButton
+                data-testid='sidebar-toggle'
+                onClick={onToggleCollapsed}
+            >
                 {t('toggleSidebarButton')}
             </UxButton>
             <div className={styles.switchersContainer}>

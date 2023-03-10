@@ -1,3 +1,4 @@
+const path = require("path");
 module.exports = {
   // A preset that is used as a base for Jest's configuration
   preset: "ts-jest",
@@ -19,16 +20,30 @@ module.exports = {
     "json",
     "node"
   ],
+  // The root directory that Jest should scan for tests and modules within
+  rootDir: "../../",
   // An array of directory names to be searched recursively up from the requiring module's location
   moduleDirectories: [
     "node_modules"
   ],
-  // The root directory that Jest should scan for tests and modules within
-  rootDir: "../../",
+  // To support absolute paths to modules in tests
+  modulePaths: [
+    "<rootDir>src"
+  ],
   // The glob patterns Jest uses to detect test files
   testMatch: [
     '<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)'
   ],
+  // A list of paths to modules that run some code to configure or set up the testing framework before each test
+  setupFilesAfterEnv: [
+      '<rootDir>config/jest/jest.setup.ts'
+  ],
+  // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
+  moduleNameMapper: {
+    '\\.(css|scss)$': 'identity-obj-proxy',
+    '\\.svg': path.resolve(__dirname, 'jest.emptyComponent.tsx')
+  },
+
   // A list of paths to directories that Jest should use to search for files in
   // roots: [
   //   "<rootDir>"
@@ -84,9 +99,6 @@ module.exports = {
   // The maximum amount of workers used to run your tests. Can be specified as % or a number. E.g. maxWorkers: 10% will use 10% of your CPU amount + 1 as the maximum worker number. maxWorkers: 2 will use a maximum of 2 workers.
   // maxWorkers: "50%",
 
-  // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
-  // moduleNameMapper: {},
-
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
   // modulePathIgnorePatterns: [],
 
@@ -119,9 +131,6 @@ module.exports = {
 
   // The paths to modules that run some code to configure or set up the testing environment before each test
   // setupFiles: [],
-
-  // A list of paths to modules that run some code to configure or set up the testing framework before each test
-  // setupFilesAfterEnv: [],
 
   // The number of seconds after which a test is considered as slow and reported as such in the results.
   // slowTestThreshold: 5,
