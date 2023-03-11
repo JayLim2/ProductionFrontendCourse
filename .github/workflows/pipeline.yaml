@@ -1,13 +1,29 @@
 name: main-pipeline
 run-name: ${{ github.actor }} is learning GitHub Actions
-on: [push]
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
 jobs:
-  check-bats-version:
+  main-job:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [ 17.x ]
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v2
+      - name: Starting Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
         with:
-          node-version: '14'
-      - run: npm install -g bats
-      - run: bats -v
+          node-version: ${{ matrix.node-version }}
+      - name: Install node modules
+        run: npm install
+      - name: Build project in production mode
+        run: npm run build:propd
+      - name: Run eslint for TypeScript
+        run: npm run lint:ts
+      - name: Run stylelint for SCSS
+        run: npm run lint:scss
+      - name: Run unit tests
+        run: npm run test:unit
