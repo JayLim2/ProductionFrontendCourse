@@ -20,7 +20,7 @@ jobs:
       - name: Install node modules
         run: npm install
       - name: Build project in production mode
-        run: npm run build:propd
+        run: npm run build:prod
       - name: Run eslint for TypeScript
         run: npm run lint:ts
       - name: Run stylelint for SCSS
