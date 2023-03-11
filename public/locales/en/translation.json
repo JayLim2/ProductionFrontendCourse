@@ -1,8 +1,8 @@
 {
   "testTranslation": "Test Translation",
   "switchLanguageButton": "Русский",
+  "shortSwitchLanguageButton": "РУ",
   "mainPageLinkTitle": "Main Page",
   "aboutPageLinkTitle": "About us",
-  "toggleSidebarButton": "Expand/Collapse",
   "loadingText": "Loading..."
 }

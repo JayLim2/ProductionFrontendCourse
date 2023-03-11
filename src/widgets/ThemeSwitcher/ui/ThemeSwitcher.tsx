@@ -3,7 +3,7 @@ import styles from './ThemeSwitcher.module.scss'
 import { Theme, useTheme } from 'app/providers/ThemeProvider'
 import ThemeDark from 'shared/assets/icons/theme-dark.svg'
 import ThemeLight from 'shared/assets/icons/theme-light.svg'
-import { ThemeButton, UxButton } from 'shared/ui/UxButton/UxButton'
+import { ButtonTheme, UxButton } from 'shared/ui/UxButton/UxButton'
 import { type FC } from 'react'
 
 interface ThemeSwitcherProps {
@@ -15,7 +15,7 @@ export const ThemeSwitcher: FC<ThemeSwitcherProps> = (props) => {
   const { theme, toggleTheme } = useTheme()
 
   return (
-        <UxButton theme={ThemeButton.CLEAR}
+        <UxButton theme={ButtonTheme.CLEAR}
                   onClick={toggleTheme}
                   className={classNames(styles.ThemeSwitcher, {}, [className])}
         >

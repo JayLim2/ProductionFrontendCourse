@@ -1,8 +1,8 @@
 {
   "testTranslation": "Тестовый Перевод",
   "switchLanguageButton": "English",
+  "shortSwitchLanguageButton": "EN",
   "mainPageLinkTitle": "Главная",
   "aboutPageLinkTitle": "О сайте",
-  "toggleSidebarButton": "Развернуть/Свернуть",
   "loadingText": "Загрузка..."
 }

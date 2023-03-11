@@ -2,9 +2,9 @@ name: main-pipeline
 run-name: ${{ github.actor }} is learning GitHub Actions
 on:
   push:
-    branches: [ master, week-3-pipelines ]
-  pull_request:
     branches: [ master, week-3 ]
+  pull_request:
+    branches: [ master ]
 jobs:
   main-job:
     runs-on: ubuntu-latest
@@ -21,13 +21,19 @@ jobs:
         run: npm install
       - name: Build project in production mode
         run: npm run build:prod
+        if: always()
       - name: Run eslint for TypeScript
         run: npm run lint:ts
+        if: always()
       - name: Run stylelint for SCSS
         run: npm run lint:scss
+        if: always()
       - name: Run unit tests
         run: npm run test:unit
+        if: always()
       - name: Build Storybook
         run: npm run storybook:build
+        if: always()
       - name: Run loki (UI) tests
         run: npm run test:ui:ci
+        if: always()

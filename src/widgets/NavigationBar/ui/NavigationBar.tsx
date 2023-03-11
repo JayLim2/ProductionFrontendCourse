@@ -15,12 +15,7 @@ export const NavigationBar: FC<NavigationBarProps> = (props) => {
   return (
         <div className={classNames(styles.NavigationBar, {}, [className])}>
             <div className={styles.links}>
-                <UxLink theme={UxLinkTheme.SECONDARY} to={'/'}>
-                    {t('mainPageLinkTitle')}
-                </UxLink>
-                <UxLink theme={UxLinkTheme.SECONDARY} to={'/about'}>
-                    {t('aboutPageLinkTitle')}
-                </UxLink>
+
             </div>
         </div>
   )
