@@ -20,26 +20,6 @@
     margin-left: 10px;
 }
 
-.isCollapsed {
-    width: var(--sidebar-width-collapsed);
-
-    .switchersContainer {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .indentLanguageSwitcher {
-        margin-left: 0;
-    }
-
-    .sidebarLink {
-        opacity: 0;
-        width: 0;
-        transition-duration: 0.2s;
-        transition-property: opacity;
-    }
-}
-
 .collapseButton {
     position: absolute;
     bottom: 32px;
@@ -66,4 +46,24 @@
 
 .sidebarIcon {
     fill: var(--inverted-primary-color);
+}
+
+.isCollapsed {
+    width: var(--sidebar-width-collapsed);
+
+    .switchersContainer {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .indentLanguageSwitcher {
+        margin-left: 0;
+    }
+
+    .sidebarLink {
+        opacity: 0;
+        width: 0;
+        transition-duration: 0.2s;
+        transition-property: opacity;
+    }
 }
