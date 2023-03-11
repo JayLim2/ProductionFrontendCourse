@@ -4,7 +4,7 @@ on:
   push:
     branches: [ master, week-3-pipelines ]
   pull_request:
-    branches: [ master ]
+    branches: [ master, week-3 ]
 jobs:
   main-job:
     runs-on: ubuntu-latest
@@ -27,3 +27,7 @@ jobs:
         run: npm run lint:scss
       - name: Run unit tests
         run: npm run test:unit
+      - name: Build Storybook
+        run: npm run storybook:build
+      - name: Run loki (UI) tests
+        run: npm run test:ui:ci
