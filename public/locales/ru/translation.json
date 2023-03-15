@@ -5,5 +5,7 @@
   "mainPageLinkTitle": "Главная",
   "aboutPageLinkTitle": "О сайте",
   "loadingText": "Загрузка...",
-  "loginButton": "Войти"
+  "loginButton": "Войти",
+  "counterIncBtn": "Увеличить",
+  "counterDecBtn": "Уменьшить"
 }

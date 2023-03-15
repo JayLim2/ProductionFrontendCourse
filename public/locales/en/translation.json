@@ -5,5 +5,7 @@
   "mainPageLinkTitle": "Main Page",
   "aboutPageLinkTitle": "About us",
   "loadingText": "Loading...",
-  "loginButton": "Sign In"
+  "loginButton": "Sign In",
+  "counterIncBtn": "Increment",
+  "counterDecBtn": "Decrement"
 }

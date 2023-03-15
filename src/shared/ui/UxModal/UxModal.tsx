@@ -13,7 +13,6 @@ interface UxModalProps {
 
 const MODAL_CLOSING_DELAY = 300;
 
-// FIXME bug with theme in Modal
 export const UxModal: FC<UxModalProps> = (props: UxModalProps) => {
   const {
     className,
