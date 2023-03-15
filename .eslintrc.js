@@ -18,7 +18,9 @@ module.exports = {
     sourceType: 'module',
     project: ['./tsconfig.json']
   },
-  plugins: ['react', 'i18next'],
+  plugins: [
+      'react', 'i18next', 'react-hooks'
+  ],
   rules: {
     '@typescript-eslint/semi': 'off',
     '@typescript-eslint/prefer-nullish-coalescing': 'off',
@@ -28,6 +30,8 @@ module.exports = {
       markupOnly: true,
       ignoreAttribute: ["to", "className", "data-testid"]
     }],
-    '@typescript-eslint/space-before-function-paren': 'off'
+    '@typescript-eslint/space-before-function-paren': 'off',
+    "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
+    "react-hooks/exhaustive-deps": "error" // Checks effect dependencies
   }
 };
