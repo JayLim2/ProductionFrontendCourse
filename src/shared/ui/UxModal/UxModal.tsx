@@ -9,6 +9,7 @@ interface UxModalProps {
   children?: ReactNode
   isOpen?: boolean
   onClose?: () => void
+  lazyMode?: boolean
 }
 
 const MODAL_CLOSING_DELAY = 300;
@@ -17,11 +18,13 @@ export const UxModal: FC<UxModalProps> = (props: UxModalProps) => {
   const {
     className,
     children,
+    lazyMode,
     isOpen,
     onClose
   } = props;
 
   const [isClosing, setIsClosing] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
   const timerRef = useRef<ReturnType<typeof setTimeout>>();
 
   const onClickClose = useCallback((): void => {
@@ -52,6 +55,12 @@ export const UxModal: FC<UxModalProps> = (props: UxModalProps) => {
 
   useEffect(() => {
     if (isOpen) {
+      setIsMounted(true);
+    }
+  }, [isOpen])
+
+  useEffect(() => {
+    if (isOpen) {
       window.addEventListener('keydown', onKeyDown);
     }
 
@@ -60,6 +69,10 @@ export const UxModal: FC<UxModalProps> = (props: UxModalProps) => {
       window.removeEventListener('keydown', onKeyDown);
     }
   }, [isOpen, onKeyDown])
+
+  if (lazyMode && !isMounted) {
+    return null;
+  }
 
   return (
     <Portal>

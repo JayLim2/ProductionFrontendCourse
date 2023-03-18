@@ -1,5 +1,5 @@
 import { type FC, useEffect, useState } from 'react';
-import { UxButton } from 'shared/ui/UxButton/UxButton';
+import { ButtonTheme, UxButton } from 'shared/ui/UxButton/UxButton';
 
 interface TestBugButtonProps {
   className?: string
@@ -23,7 +23,7 @@ export const TestBugButton: FC<TestBugButtonProps> = () => {
 
   return (
       // eslint-disable-next-line i18next/no-literal-string
-      <UxButton onClick={onThrow}>
+      <UxButton onClick={onThrow} theme={ButtonTheme.BACKGROUND_INVERTED}>
           Test Bug Button
       </UxButton>
   );

@@ -1,9 +1,9 @@
 import { classNames } from 'shared/lib/classNames/classNames'
 import styles from './NavigationBar.module.scss'
 import { type FC, useState } from 'react'
-import { UxModal } from 'shared/ui/UxModal/UxModal';
 import { ButtonSize, ButtonTheme, UxButton } from 'shared/ui/UxButton/UxButton';
 import { useTranslation } from 'react-i18next';
+import { LoginModal } from 'features/AuthByUsername';
 
 interface NavigationBarProps {
   className?: string
@@ -32,13 +32,9 @@ export const NavigationBar: FC<NavigationBarProps> = (props) => {
       >
         {t('loginButton')}
       </UxButton>
-      <UxModal isOpen={isAuthModalVisible}
-               onClose={onClickOutsideAuthModal}
-      >
-        {/* eslint-disable-next-line i18next/no-literal-string */}
-        {/* eslint-disable-next-line react/no-unescaped-entities */}
-        Some Content for Modal Window
-      </UxModal>
+      <LoginModal isOpen={isAuthModalVisible}
+                  onClose={onClickOutsideAuthModal}
+      />
     </div>
   )
 }
