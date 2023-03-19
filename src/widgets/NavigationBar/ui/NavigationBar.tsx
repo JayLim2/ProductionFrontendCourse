@@ -54,9 +54,11 @@ export const NavigationBar: FC<NavigationBarProps> = (props) => {
         >
           {t('loginButton')}
         </UxButton>
-        <LoginModal isOpen={isAuthModalVisible}
-                    onClose={onClickOutsideAuthModal}
-        />
+        {isAuthModalVisible && (
+          <LoginModal isOpen={isAuthModalVisible}
+                      onClose={onClickOutsideAuthModal}
+          />
+        )}
       </div>
     )
   }
