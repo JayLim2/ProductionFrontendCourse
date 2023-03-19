@@ -1,5 +1,5 @@
 import { type User } from './User';
 
-export interface UserSchema {
+export default interface UserSchema {
   authData?: User
 }
