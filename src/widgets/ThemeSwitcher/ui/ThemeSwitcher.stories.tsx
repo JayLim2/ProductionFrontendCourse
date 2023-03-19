@@ -4,7 +4,7 @@ import { Theme } from 'app/providers/ThemeProvider';
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
 
 const componentMeta = {
-  title: 'shared/ThemeSwitcher',
+  title: 'widgets/ThemeSwitcher',
   component: ThemeSwitcher,
   argTypes: {
     backgroundColor: { control: 'color' }

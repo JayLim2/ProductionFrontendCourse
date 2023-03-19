@@ -6,6 +6,7 @@
   "aboutPageLinkTitle": "About us",
   "loadingText": "Loading...",
   "loginButton": "Sign In",
+  "logoutButton": "Log Out",
   "counterIncBtn": "Increment",
   "counterDecBtn": "Decrement"
 }

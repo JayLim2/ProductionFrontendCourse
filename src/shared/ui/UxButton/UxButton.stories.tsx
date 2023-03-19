@@ -131,3 +131,20 @@ SquareXL.args = {
   isSquare: true,
   size: ButtonSize.XL
 };
+
+/* Disabled */
+
+export const Disabled = Template.bind({});
+Disabled.args = {
+  children: 'Disabled Button',
+  disabled: true
+};
+
+export const DisabledDark = Template.bind({});
+DisabledDark.args = {
+  children: 'Disabled Button',
+  disabled: true
+};
+DisabledDark.decorators = [ThemeDecorator(Theme.DARK)];
+
+// TODO add more variations for 'Disabled' button

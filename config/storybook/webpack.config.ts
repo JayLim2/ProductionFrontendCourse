@@ -1,4 +1,4 @@
-import type webpack from 'webpack';
+import webpack from 'webpack';
 import type { RuleSetRule } from 'webpack';
 import { type BuildPaths } from '../build/types/config';
 import path from 'path';
@@ -35,6 +35,10 @@ export default (props: StorybookWebpackConfiguration): webpack.Configuration => 
     return ruleset;
   });
   config.module.rules.push(svgLoader);
+
+  config.plugins.push(new webpack.DefinePlugin({
+    __IS_DEV__: true
+  }))
 
   return config;
 }

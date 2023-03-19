@@ -22,6 +22,7 @@ interface UxButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   theme?: ButtonTheme
   isSquare?: boolean
   size?: ButtonSize
+  disabled?: boolean
 }
 
 export const UxButton: FC<UxButtonProps> = (props) => {
@@ -31,20 +32,23 @@ export const UxButton: FC<UxButtonProps> = (props) => {
     theme,
     isSquare,
     size = ButtonSize.M,
+    disabled = false,
     ...otherProps
   } = props
 
   const mods = {
     [styles[theme]]: true,
     [styles.square]: isSquare,
-    [styles[size]]: true
+    [styles[size]]: true,
+    [styles.disabled]: disabled
   };
 
   return (
-        <button className={classNames(styles.UxButton, mods, [className, styles[theme]])}
-                {...otherProps}
-        >
-            {children}
-        </button>
+    <button className={classNames(styles.UxButton, mods, [className, styles[theme]])}
+            {...otherProps}
+            disabled={disabled}
+    >
+      {children}
+    </button>
   )
 }

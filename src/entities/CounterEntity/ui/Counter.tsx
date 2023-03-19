@@ -1,7 +1,7 @@
 import { type FC } from 'react';
 import { UxButton } from 'shared/ui/UxButton/UxButton';
 import { useDispatch, useSelector } from 'react-redux';
-import { counterActions } from '../model/slices/CounterSlice';
+import { counterActions } from '../model/slice/CounterSlice';
 import { type StateSchema } from 'app/providers/StoreProvider/config/StateSchema';
 import { getCounterValue } from '../model/selectors/GetCounterValue/GetCounterValue';
 import { useTranslation } from 'react-i18next';

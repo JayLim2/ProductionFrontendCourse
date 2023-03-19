@@ -6,6 +6,7 @@
   "aboutPageLinkTitle": "О сайте",
   "loadingText": "Загрузка...",
   "loginButton": "Войти",
+  "logoutButton": "Выйти",
   "counterIncBtn": "Увеличить",
   "counterDecBtn": "Уменьшить"
 }

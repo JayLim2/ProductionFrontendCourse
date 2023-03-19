@@ -1,5 +1,8 @@
 {
   "loginFieldLabel": "Логин (имя пользователя)",
   "passwordFieldLabel": "Пароль",
-  "signInButton": "Войти"
+  "signInButton": "Войти",
+  "isProceeding": "Авторизуемся...",
+  "authFormTitle": "Авторизация",
+  "invalidCredentialsMessage": "Неверный логин или пароль. Попробуйте еще раз"
 }

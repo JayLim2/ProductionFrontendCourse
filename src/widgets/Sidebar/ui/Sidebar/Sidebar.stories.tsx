@@ -4,7 +4,7 @@ import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDeco
 import { Theme } from 'app/providers/ThemeProvider';
 
 const componentMeta = {
-  title: 'shared/Sidebar',
+  title: 'widgets/Sidebar',
   component: Sidebar,
   argTypes: {
     backgroundColor: { control: 'color' }
