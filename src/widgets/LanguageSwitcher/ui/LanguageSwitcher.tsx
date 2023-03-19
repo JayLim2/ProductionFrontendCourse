@@ -20,7 +20,7 @@ export const LanguageSwitcher: FC<LanguageSwitcherProps> = (props) => {
   return (
         <UxButton
             className={classNames(styles.LanguageSwitcher, {}, [className])}
-            theme={ButtonTheme.CLEAR}
+            theme={ButtonTheme.CLEAR_INVERTED}
             onClick={switchLanguage}
         >
             {t(isShort ? 'shortSwitchLanguageButton' : 'switchLanguageButton')}

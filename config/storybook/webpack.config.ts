@@ -1,4 +1,4 @@
-import type webpack from 'webpack';
+import webpack from 'webpack';
 import type { RuleSetRule } from 'webpack';
 import { type BuildPaths } from '../build/types/config';
 import path from 'path';
@@ -18,7 +18,8 @@ export default (props: StorybookWebpackConfiguration): webpack.Configuration => 
     entrypoint: '',
     srcDirectory: path.resolve(__dirname, '..', '..', 'src')
   };
-  config.resolve.modules.push(paths.srcDirectory);
+  // 19.03.23 Fixed bug with resolving absolute paths in Storybook ('Module not found' on CI)
+  config.resolve.modules.unshift(paths.srcDirectory);
   config.resolve.extensions.push('.ts', '.tsx');
 
   const styleLoader = buildCssLoader(true);
@@ -35,6 +36,10 @@ export default (props: StorybookWebpackConfiguration): webpack.Configuration => 
     return ruleset;
   });
   config.module.rules.push(svgLoader);
+
+  config.plugins.push(new webpack.DefinePlugin({
+    __IS_DEV__: true
+  }))
 
   return config;
 }

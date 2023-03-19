@@ -4,5 +4,9 @@
   "shortSwitchLanguageButton": "EN",
   "mainPageLinkTitle": "Главная",
   "aboutPageLinkTitle": "О сайте",
-  "loadingText": "Загрузка..."
+  "loadingText": "Загрузка...",
+  "loginButton": "Войти",
+  "logoutButton": "Выйти",
+  "counterIncBtn": "Увеличить",
+  "counterDecBtn": "Уменьшить"
 }

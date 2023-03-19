@@ -4,5 +4,9 @@
   "shortSwitchLanguageButton": "РУ",
   "mainPageLinkTitle": "Main Page",
   "aboutPageLinkTitle": "About us",
-  "loadingText": "Loading..."
+  "loadingText": "Loading...",
+  "loginButton": "Sign In",
+  "logoutButton": "Log Out",
+  "counterIncBtn": "Increment",
+  "counterDecBtn": "Decrement"
 }

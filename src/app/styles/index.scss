@@ -3,10 +3,13 @@
 @import "themes/dark";
 @import "themes/default";
 
-.app {
+body {
     font: var(--font-m);
-    background-color: var(--bg-color);
     color: var(--primary-color);
+}
+
+.app {
+    background-color: var(--bg-color);
     min-height: 100vh;
 }
 
@@ -17,4 +20,5 @@
 .page-wrapper {
     flex-grow: 1;
     padding: 20px;
+    color: var(--primary-color);
 }

@@ -1,0 +1,8 @@
+{
+  "loginFieldLabel": "Login (username)",
+  "passwordFieldLabel": "Password",
+  "signInButton": "Sign in",
+  "isProceeding": "Signing in...",
+  "authFormTitle": "Sign In",
+  "invalidCredentialsMessage": "Invalid username or password. Please try again"
+}

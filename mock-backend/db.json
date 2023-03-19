@@ -1,0 +1,36 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "My First Post",
+      "author": "John Smith"
+    },
+    {
+      "id": 2,
+      "title": "Hello World",
+      "author": "Boris Shaver"
+    },
+    {
+      "id": 2,
+      "title": "Who framed Roger rabbit?",
+      "author": "Sergei Komarov"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "users": [
+    {
+      "id": "aba-caba-yama-lalalala",
+      "username": "admin",
+      "password": "123"
+    }
+  ]
+}

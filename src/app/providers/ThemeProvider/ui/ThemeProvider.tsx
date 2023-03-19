@@ -4,8 +4,17 @@ import { Theme, THEME_PROPERTY, ThemeContext } from '../lib/Theme/ThemeContext'
 // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
 const defaultTheme = localStorage.getItem(THEME_PROPERTY) as Theme || Theme.DEFAULT
 
-const ThemeProvider: FC<any> = (props) => {
-  const [theme, setTheme] = useState<Theme>(defaultTheme)
+interface ThemeProviderProps {
+  initialTheme?: Theme
+}
+
+const ThemeProvider: FC<ThemeProviderProps> = (props) => {
+  const {
+    children,
+    initialTheme
+  } = props;
+
+  const [theme, setTheme] = useState<Theme>(initialTheme || defaultTheme)
 
   const defaultProps = useMemo(() => {
     return { theme, setTheme }
@@ -13,7 +22,7 @@ const ThemeProvider: FC<any> = (props) => {
 
   return (
         <ThemeContext.Provider value={defaultProps}>
-            {props.children}
+            {children}
         </ThemeContext.Provider>
   )
 }

@@ -1,0 +1,13 @@
+.LoginForm {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    label {
+        color: var(--primary-color);
+    }
+
+    input {
+        display: block;
+    }
+}

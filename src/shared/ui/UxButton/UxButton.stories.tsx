@@ -38,6 +38,19 @@ ClearDark.args = {
 };
 ClearDark.decorators = [ThemeDecorator(Theme.DARK)];
 
+export const ClearInverted = Template.bind({});
+ClearInverted.args = {
+  children: 'Text',
+  theme: ButtonTheme.CLEAR_INVERTED
+};
+
+export const ClearInvertedDark = Template.bind({});
+ClearInvertedDark.args = {
+  children: 'Text',
+  theme: ButtonTheme.CLEAR_INVERTED
+};
+ClearInvertedDark.decorators = [ThemeDecorator(Theme.DARK)];
+
 export const Outline = Template.bind({});
 Outline.args = {
   children: 'Text',
@@ -118,3 +131,20 @@ SquareXL.args = {
   isSquare: true,
   size: ButtonSize.XL
 };
+
+/* Disabled */
+
+export const Disabled = Template.bind({});
+Disabled.args = {
+  children: 'Disabled Button',
+  disabled: true
+};
+
+export const DisabledDark = Template.bind({});
+DisabledDark.args = {
+  children: 'Disabled Button',
+  disabled: true
+};
+DisabledDark.decorators = [ThemeDecorator(Theme.DARK)];
+
+// TODO add more variations for 'Disabled' button

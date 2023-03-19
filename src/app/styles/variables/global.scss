@@ -14,4 +14,16 @@
     /* Sidebar */
     --sidebar-width: 300px;
     --sidebar-width-collapsed: 80px;
+
+    /* Modal Windows */
+    --ux-modal-z-index: 10;
+
+    /* Common */
+    --ux-overlay-color: rgb(60 60 60 / 60%);
+
+    /* Error Text */
+    --light-red-color: #f00;
+    --dark-red-color: #d70101;
+    --light-yellow-color: #ff0;
+    --dark-yellow-color: #dcdc00;
 }
