@@ -1,24 +1,24 @@
 {
   "posts": [
     {
-      "id": 1,
+      "id": "1",
       "title": "My First Post",
       "author": "John Smith"
     },
     {
-      "id": 2,
+      "id": "2",
       "title": "Hello World",
       "author": "Boris Shaver"
     },
     {
-      "id": 2,
+      "id": "3",
       "title": "Who framed Roger rabbit?",
       "author": "Sergei Komarov"
     }
   ],
   "comments": [
     {
-      "id": 1,
+      "id": "1",
       "body": "some comment",
       "postId": 1
     }
