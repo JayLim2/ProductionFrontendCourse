@@ -38,7 +38,8 @@ export default (props: StorybookWebpackConfiguration): webpack.Configuration => 
   config.module.rules.push(svgLoader);
 
   config.plugins.push(new webpack.DefinePlugin({
-    __IS_DEV__: true
+    __IS_DEV__: true,
+    __API__: ''
   }))
 
   return config;

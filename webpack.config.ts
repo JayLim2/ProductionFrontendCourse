@@ -11,15 +11,15 @@ export default (env: BuildEnv): webpack.Configuration => {
     srcDirectory: path.resolve(__dirname, 'src')
   }
 
-  // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
-  const mode = env.mode || 'development'
-  // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
-  const port = env.port || 3000
+  const mode = env.mode || 'development';
+  const port = env.port || 3000;
+  const apiBaseUrl = env.apiBaseUrl || 'http://localhost:8000';
 
   return buildWebpackConfig({
     mode,
     port,
     paths,
-    isDev: mode === 'development'
+    isDev: mode === 'development',
+    apiBaseUrl
   })
 }
