@@ -5,13 +5,16 @@ import { useTranslation } from 'react-i18next';
 import { ButtonTheme, UxButton } from 'shared/ui/UxButton/UxButton';
 import { UxInput } from 'shared/ui/UxInput/UxInput';
 import { useSelector } from 'react-redux';
-import { authActions, authByUsername } from 'features/AuthByUsernameFeature';
+import {
+  authActions,
+  authReducer,
+  authByUsername,
+  getAuthUsername,
+  getAuthPassword,
+  getAuthIsLoading,
+  getAuthError
+} from 'features/AuthByUsernameFeature';
 import { TextTheme, UxText } from 'shared/ui/UxText/UxText';
-import { authReducer } from 'features/AuthByUsernameFeature/model/slice/AuthSlice';
-import { getAuthUsername } from 'features/AuthByUsernameFeature/model/selectors/GetAuthUsername/GetAuthUsername';
-import { getAuthPassword } from 'features/AuthByUsernameFeature/model/selectors/GetAuthPassword/GetAuthPassword';
-import { getAuthIsLoading } from 'features/AuthByUsernameFeature/model/selectors/GetAuthIsLoading/GetAuthIsLoading';
-import { getAuthError } from 'features/AuthByUsernameFeature/model/selectors/GetAuthError/GetAuthError';
 import { DynamicModuleLoader, type ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useTypedDispatch } from 'shared/lib/hooks/useTypedDispatch/useTypedDispatch';
 
