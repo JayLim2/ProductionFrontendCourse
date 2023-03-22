@@ -4,7 +4,7 @@ import { type FC, memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ButtonTheme, UxButton } from 'shared/ui/UxButton/UxButton';
 import { UxInput } from 'shared/ui/UxInput/UxInput';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { authActions, authByUsername } from 'features/AuthByUsernameFeature';
 import { TextTheme, UxText } from 'shared/ui/UxText/UxText';
 import { authReducer } from 'features/AuthByUsernameFeature/model/slice/AuthSlice';
@@ -13,9 +13,11 @@ import { getAuthPassword } from 'features/AuthByUsernameFeature/model/selectors/
 import { getAuthIsLoading } from 'features/AuthByUsernameFeature/model/selectors/GetAuthIsLoading/GetAuthIsLoading';
 import { getAuthError } from 'features/AuthByUsernameFeature/model/selectors/GetAuthError/GetAuthError';
 import { DynamicModuleLoader, type ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { useTypedDispatch } from 'shared/lib/hooks/useTypedDispatch/useTypedDispatch';
 
 export interface LoginFormProps {
   className?: string
+  onSuccessAuth: () => void
 }
 
 const reducersList: ReducersList = {
@@ -23,9 +25,9 @@ const reducersList: ReducersList = {
 }
 
 const LoginForm: FC<LoginFormProps> = memo((props: LoginFormProps) => {
-  const { className } = props;
+  const { className, onSuccessAuth } = props;
   const { t } = useTranslation('loginForm');
-  const dispatch = useDispatch();
+  const dispatch = useTypedDispatch();
 
   // Fetch data from store
   const username = useSelector(getAuthUsername);
@@ -41,11 +43,15 @@ const LoginForm: FC<LoginFormProps> = memo((props: LoginFormProps) => {
     dispatch(authActions.setPassword(password));
   }, [dispatch]);
 
-  const onClickSignIn = useCallback(() => {
-    dispatch(authByUsername({
+  // @ts-expect-error Because eslint don't like Promise<void> // TODO FIXME 23.03.2023
+  const onClickSignIn = useCallback(async (): void => {
+    const result = await dispatch(authByUsername({
       username, password
     }));
-  }, [dispatch, username, password]);
+    if (result.meta.requestStatus === 'fulfilled') {
+      onSuccessAuth();
+    }
+  }, [dispatch, username, password, onSuccessAuth]);
 
   return (
     <DynamicModuleLoader reducers={reducersList}>

@@ -1,6 +1,6 @@
 import { classNames } from 'shared/lib/classNames/classNames'
 import styles from './UxButton.module.scss'
-import { type ButtonHTMLAttributes, type FC } from 'react'
+import { type ButtonHTMLAttributes, type FC, memo, type ReactNode } from 'react'
 
 export enum ButtonTheme {
   CLEAR = 'clear',
@@ -23,9 +23,10 @@ interface UxButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   isSquare?: boolean
   size?: ButtonSize
   disabled?: boolean
+  children?: ReactNode
 }
 
-export const UxButton: FC<UxButtonProps> = (props) => {
+export const UxButton: FC<UxButtonProps> = memo((props: UxButtonProps) => {
   const {
     className,
     children,
@@ -51,4 +52,4 @@ export const UxButton: FC<UxButtonProps> = (props) => {
       {children}
     </button>
   )
-}
+});

@@ -10,15 +10,9 @@ interface AuthByUsernameProps {
 
 export const authByUsername = createAsyncThunk<User, AuthByUsernameProps, { rejectValue: string }>(
   'auth/byUsername',
-  async (props, thunkAPI) => {
+  async (authData, thunkAPI) => {
     try {
-      const response = await axios.post(
-        'http://localhost:8000/login',
-        {
-          username: props.username,
-          password: props.password
-        }
-      )
+      const response = await axios.post<User>('http://localhost:8000/login', authData);
       if (!response.data) {
         throw new Error('Empty response.');
       }

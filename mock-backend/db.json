@@ -24,7 +24,14 @@
     }
   ],
   "profile": {
-    "name": "typicode"
+    "firstName": "Sergei",
+    "lastName": "Komarov",
+    "age": 25,
+    "currency": "RUB",
+    "country": "Russia",
+    "city": "Samara",
+    "username": "MrKomaroff",
+    "avatar": "https://d.radikal.host/2023/03/22/my_avatar.jpg"
   },
   "users": [
     {

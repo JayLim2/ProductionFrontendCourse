@@ -1,6 +1,7 @@
 import { type CounterSchema } from 'entities/CounterEntity';
 import { type UserSchema } from 'entities/UserEntity';
 import { type AuthSchema } from 'features/AuthByUsernameFeature';
+import { type UserProfileSchema } from 'entities/UserProfileEntity';
 import {
   type AnyAction,
   type CombinedState,
@@ -15,6 +16,7 @@ export interface StateSchema {
 
   // Async Reducers
   authForm?: AuthSchema
+  userProfile?: UserProfileSchema
 }
 
 export type StateSchemaKey = keyof StateSchema;

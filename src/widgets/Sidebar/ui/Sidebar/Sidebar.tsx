@@ -1,24 +1,19 @@
 import { classNames } from 'shared/lib/classNames/classNames'
 import styles from './Sidebar.module.scss'
-import { type FC, useState } from 'react'
+import { memo, useState } from 'react'
 import { ButtonSize, ButtonTheme, UxButton } from 'shared/ui/UxButton/UxButton'
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher'
 import { LanguageSwitcher } from 'widgets/LanguageSwitcher'
-import { UxLink, UxLinkTheme } from 'shared/ui/UxLink/UxLink';
-import { useTranslation } from 'react-i18next';
-import { RoutePath } from 'app/providers/router/config/routeConfig';
-
-import MainPageIcon from 'shared/assets/icons/main-20-20.svg'
-import AboutPageIcon from 'shared/assets/icons/about-20-20.svg'
+import { SidebarItemsList } from '../../model/SidebarItemType';
+import { SidebarItem } from '../SidebarItem/SidebarItem';
 
 interface SidebarProps {
   className?: string
 }
 
-export const Sidebar: FC<SidebarProps> = (props) => {
+export const Sidebar = memo((props: SidebarProps) => {
   const { className } = props
   const [isCollapsed, setCollapsed] = useState(false)
-  const { t } = useTranslation();
 
   const onToggleCollapsed = (): void => {
     setCollapsed(prevIsCollapsed => !prevIsCollapsed)
@@ -31,26 +26,13 @@ export const Sidebar: FC<SidebarProps> = (props) => {
              }, [className])}
         >
             <div className={styles.sidebarLinksContainer}>
-                <UxLink
-                    theme={UxLinkTheme.SECONDARY}
-                    to={RoutePath.main}
-                    className={styles.sidebarLinkWrapper}
-                >
-                    <MainPageIcon className={styles.sidebarIcon}/>
-                    <span className={styles.sidebarLink}>
-                        {t('mainPageLinkTitle')}
-                    </span>
-                </UxLink>
-                <UxLink
-                    theme={UxLinkTheme.SECONDARY}
-                    to={RoutePath.about}
-                    className={styles.sidebarLinkWrapper}
-                >
-                    <AboutPageIcon className={styles.sidebarIcon}/>
-                    <span className={styles.sidebarLink}>
-                        {t('aboutPageLinkTitle')}
-                    </span>
-                </UxLink>
+                {SidebarItemsList.map(sidebarItem => (
+                    <SidebarItem
+                        key={sidebarItem.path}
+                        item={sidebarItem}
+                        isCollapsed={isCollapsed}
+                    />
+                ))}
             </div>
 
             <UxButton
@@ -72,4 +54,4 @@ export const Sidebar: FC<SidebarProps> = (props) => {
             </div>
         </div>
   )
-}
+});
