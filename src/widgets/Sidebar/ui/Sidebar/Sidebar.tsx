@@ -1,4 +1,4 @@
-import { classNames } from 'shared/lib/classNames/classNames'
+import { classNames, type Modifiers } from 'shared/lib/classNames/classNames'
 import styles from './Sidebar.module.scss'
 import { memo, useState } from 'react'
 import { ButtonSize, ButtonTheme, UxButton } from 'shared/ui/UxButton/UxButton'
@@ -19,11 +19,13 @@ export const Sidebar = memo((props: SidebarProps) => {
     setCollapsed(prevIsCollapsed => !prevIsCollapsed)
   }
 
+  const modifiers: Modifiers = {
+    [styles.isCollapsed]: isCollapsed
+  };
+
   return (
         <div data-testid='sidebar'
-             className={classNames(styles.Sidebar, {
-               [styles.isCollapsed]: isCollapsed
-             }, [className])}
+             className={classNames(styles.Sidebar, modifiers, [className])}
         >
             <div className={styles.sidebarLinksContainer}>
                 {SidebarItemsList.map(sidebarItem => (

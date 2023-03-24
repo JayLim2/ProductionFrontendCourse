@@ -1,6 +1,7 @@
-import { classNames } from 'shared/lib/classNames/classNames'
+import { classNames, type Modifiers } from 'shared/lib/classNames/classNames'
 import styles from './UxButton.module.scss'
 import { type ButtonHTMLAttributes, type FC, memo, type ReactNode } from 'react'
+import { Theme } from 'app/providers/ThemeProvider';
 
 export enum ButtonTheme {
   CLEAR = 'clear',
@@ -30,22 +31,28 @@ export const UxButton: FC<UxButtonProps> = memo((props: UxButtonProps) => {
   const {
     className,
     children,
-    theme,
+    theme = Theme.DEFAULT,
     isSquare,
     size = ButtonSize.M,
     disabled = false,
     ...otherProps
   } = props
 
-  const mods = {
+  const modifiers: Modifiers = {
     [styles[theme]]: true,
     [styles.square]: isSquare,
     [styles[size]]: true,
     [styles.disabled]: disabled
   };
 
+  const effectiveClassName: string = classNames(
+    styles.UxButton,
+    modifiers,
+    [className, styles[theme]]
+  );
+
   return (
-    <button className={classNames(styles.UxButton, mods, [className, styles[theme]])}
+    <button className={effectiveClassName}
             {...otherProps}
             disabled={disabled}
     >

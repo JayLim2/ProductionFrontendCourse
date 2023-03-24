@@ -5,3 +5,11 @@ export {
   userProfileActions,
   userProfileReducer
 } from './model/slice/UserProfileSlice';
+
+export {
+  fetchUserProfileData
+} from './model/services/FetchUserProfileData/FetchUserProfileData';
+
+export {
+  UserProfileCard
+} from '../UserProfileEntity/ui/UserProfileCard';

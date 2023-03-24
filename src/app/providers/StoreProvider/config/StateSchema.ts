@@ -36,7 +36,7 @@ export interface ReducerManager {
 
 export interface ThunkExtraArgument {
   api: AxiosInstance
-  navigate: NavigateToFunction
+  navigate?: NavigateToFunction
 }
 
 export interface ThunkConfiguration<T> {

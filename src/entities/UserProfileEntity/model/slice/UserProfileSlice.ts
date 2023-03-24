@@ -1,5 +1,7 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
 import { type UserProfileSchema } from '../types/UserProfileSchema';
+import { fetchUserProfileData } from '../services/FetchUserProfileData/FetchUserProfileData';
+import { type UserProfile } from 'entities/UserProfileEntity';
 
 const initialState: UserProfileSchema = {
   isReadonly: true,
@@ -10,8 +12,24 @@ const initialState: UserProfileSchema = {
 export const userProfileSlice = createSlice({
   name: 'userProfile',
   initialState,
-  reducers: {
-
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchUserProfileData.pending, (state, action) => {
+        delete state.error;
+        state.isLoading = true;
+      })
+      .addCase(
+        fetchUserProfileData.fulfilled,
+        (state, action: PayloadAction<UserProfile>) => {
+          state.isLoading = false;
+          state.data = action.payload;
+        }
+      )
+      .addCase(fetchUserProfileData.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
   }
 })
 

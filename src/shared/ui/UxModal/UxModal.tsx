@@ -1,7 +1,16 @@
-import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames, type Modifiers } from 'shared/lib/classNames/classNames';
 import styles from './UxModal.module.scss';
+import {
+  type MutableRefObject,
+  type FC,
+  type ReactNode,
+  useCallback,
+  useEffect,
+  useRef,
+  useState
+} from 'react';
 import type React from 'react';
-import { type FC, type ReactNode, useCallback, useEffect, useRef, useState } from 'react';
+
 import { Portal } from 'widgets/Portal/Portal';
 
 interface UxModalProps {
@@ -25,7 +34,7 @@ export const UxModal: FC<UxModalProps> = (props: UxModalProps) => {
 
   const [isClosing, setIsClosing] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
-  const timerRef = useRef<ReturnType<typeof setTimeout>>();
+  const timerRef = useRef() as MutableRefObject<ReturnType<typeof setTimeout>>;
 
   const onClickClose = useCallback((): void => {
     if (onClose) {
@@ -41,7 +50,7 @@ export const UxModal: FC<UxModalProps> = (props: UxModalProps) => {
     e.stopPropagation();
   }
 
-  const modifiers: Record<string, boolean> = {
+  const modifiers: Modifiers = {
     [styles.opened]: isOpen,
     [styles.isClosing]: isClosing
   };
