@@ -1,7 +1,7 @@
 import { classNames } from 'shared/lib/classNames/classNames'
 import styles from './UxLink.module.scss'
 import { Link, type LinkProps } from 'react-router-dom'
-import { type FC } from 'react'
+import { type FC, memo, type ReactNode } from 'react'
 
 export enum UxLinkTheme {
   PRIMARY = 'primary',
@@ -11,9 +11,10 @@ export enum UxLinkTheme {
 interface UxLinkProps extends LinkProps {
   className?: string
   theme?: UxLinkTheme
+  children?: ReactNode
 }
 
-export const UxLink: FC<UxLinkProps> = (props) => {
+export const UxLink: FC<UxLinkProps> = memo((props: UxLinkProps) => {
   const {
     to,
     children,
@@ -34,4 +35,4 @@ export const UxLink: FC<UxLinkProps> = (props) => {
             {children}
         </Link>
   )
-}
+});

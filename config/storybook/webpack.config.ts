@@ -18,27 +18,31 @@ export default (props: StorybookWebpackConfiguration): webpack.Configuration => 
     entrypoint: '',
     srcDirectory: path.resolve(__dirname, '..', '..', 'src')
   };
-  // 19.03.23 Fixed bug with resolving absolute paths in Storybook ('Module not found' on CI)
-  config.resolve.modules.unshift(paths.srcDirectory);
-  config.resolve.extensions.push('.ts', '.tsx');
+    // 19.03.23 Fixed bug with resolving absolute paths in Storybook ('Module not found' on CI)
+  config.resolve?.modules?.unshift(paths.srcDirectory);
+  config.resolve?.extensions?.push('.ts', '.tsx');
 
   const styleLoader = buildCssLoader(true);
-  config.module.rules.push(styleLoader);
-
-  config.module.rules = config.module.rules.map((ruleset: RuleSetRule) => {
-    // eslint-disable-next-line @typescript-eslint/prefer-includes
-    if (/svg/.test(ruleset.test as string)) {
-      return {
-        ...ruleset,
-        exclude: /\.svg$/i
+  if (config.module) {
+    config.module.rules?.push(styleLoader);
+    config.module.rules = config.module.rules?.map<RuleSetRule>(
+      (ruleset, index, array) => {
+        // eslint-disable-next-line @typescript-eslint/prefer-includes
+        if (/svg/.test((ruleset as RuleSetRule).test as string)) {
+          return {
+            ...(ruleset as RuleSetRule),
+            exclude: /\.svg$/i
+          }
+        }
+        return ruleset as RuleSetRule;
       }
-    }
-    return ruleset;
-  });
-  config.module.rules.push(svgLoader);
+    );
+    config.module.rules?.push(svgLoader);
+  }
 
-  config.plugins.push(new webpack.DefinePlugin({
-    __IS_DEV__: true
+  config.plugins?.push(new webpack.DefinePlugin({
+    __IS_DEV__: JSON.stringify(true),
+    __API__: JSON.stringify('')
   }))
 
   return config;

@@ -1,6 +1,6 @@
 import { classNames } from 'shared/lib/classNames/classNames'
 import styles from './NavigationBar.module.scss'
-import { type FC, useCallback, useState } from 'react'
+import { memo, useCallback, useState } from 'react'
 import { ButtonSize, ButtonTheme, UxButton } from 'shared/ui/UxButton/UxButton';
 import { useTranslation } from 'react-i18next';
 import { LoginModal } from 'features/AuthByUsernameFeature';
@@ -11,7 +11,7 @@ interface NavigationBarProps {
   className?: string
 }
 
-export const NavigationBar: FC<NavigationBarProps> = (props) => {
+export const NavigationBar = memo((props: NavigationBarProps) => {
   const authData = useSelector(getUserAuthData);
 
   const { className } = props
@@ -54,10 +54,12 @@ export const NavigationBar: FC<NavigationBarProps> = (props) => {
         >
           {t('loginButton')}
         </UxButton>
-        <LoginModal isOpen={isAuthModalVisible}
-                    onClose={onClickOutsideAuthModal}
-        />
+        {isAuthModalVisible && (
+          <LoginModal isOpen={isAuthModalVisible}
+                      onClose={onClickOutsideAuthModal}
+          />
+        )}
       </div>
     )
   }
-}
+});

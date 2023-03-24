@@ -2,14 +2,14 @@ import { classNames } from 'shared/lib/classNames/classNames'
 import styles from './LanguageSwitcher.module.scss'
 import { useTranslation } from 'react-i18next'
 import { ButtonTheme, UxButton } from 'shared/ui/UxButton/UxButton'
-import { type FC } from 'react'
+import { memo } from 'react'
 
 interface LanguageSwitcherProps {
   className?: string
   isShort?: boolean
 }
 
-export const LanguageSwitcher: FC<LanguageSwitcherProps> = (props) => {
+export const LanguageSwitcher = memo((props: LanguageSwitcherProps) => {
   const { className, isShort } = props
   const { t, i18n } = useTranslation()
 
@@ -26,4 +26,4 @@ export const LanguageSwitcher: FC<LanguageSwitcherProps> = (props) => {
             {t(isShort ? 'shortSwitchLanguageButton' : 'switchLanguageButton')}
         </UxButton>
   )
-}
+});

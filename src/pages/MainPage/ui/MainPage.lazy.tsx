@@ -1,9 +1,8 @@
-import { lazy } from 'react'
+import { type FC, lazy } from 'react'
 
-const MainPageLazy = lazy(async () => await new Promise((resolve) => {
+const MainPageLazy = lazy<FC<any>>(async () => await new Promise((resolve) => {
   // FIXME ONLY FOR LEARNING
   setTimeout(() => {
-    // @ts-expect-error Because I don't know another way to do it
     resolve(import('./MainPage'))
   }, 1000)
 }))

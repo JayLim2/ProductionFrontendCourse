@@ -9,7 +9,7 @@ import { useTranslation } from 'react-i18next';
 export const Counter: FC<any> = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const counterValue = useSelector<StateSchema>(getCounterValue);
+  const counterValue: number = useSelector<StateSchema, number>(getCounterValue);
 
   const increment = (): void => {
     dispatch(counterActions.increment());

@@ -1,7 +1,14 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import styles from './UxInput.module.scss';
+import {
+  type MutableRefObject,
+  type FC,
+  type InputHTMLAttributes,
+  memo,
+  useEffect,
+  useRef
+} from 'react';
 import type React from 'react';
-import { type FC, type InputHTMLAttributes, memo, useEffect, useRef } from 'react';
 
 type ExcludedHTMLInputAttributes = 'value' | 'onChange';
 
@@ -24,7 +31,7 @@ const UxInput: FC<UxInputProps> = memo((props: UxInputProps) => {
     ...otherProps
   } = props;
 
-  const inputRef = useRef<HTMLInputElement>();
+  const inputRef = useRef() as MutableRefObject<HTMLInputElement>;
 
   useEffect(() => {
     if (autoFocus) {

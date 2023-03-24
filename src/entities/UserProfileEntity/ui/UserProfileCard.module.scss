@@ -1,0 +1,25 @@
+.UserProfileCard {
+    padding: 20px;
+    border: 2px solid var(--inverted-bg-color);
+}
+
+.editButton {
+    margin-left: auto;
+}
+
+.header {
+    display: flex;
+}
+
+.content {
+    margin-top: 20px;
+}
+
+.input {
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+label {
+    display: block;
+}

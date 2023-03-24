@@ -33,21 +33,6 @@
     align-items: center;
 }
 
-.sidebarLinkWrapper {
-    margin-top: 10px;
-    margin-left: 10px;
-    display: flex;
-    align-items: center;
-}
-
-.sidebarLink {
-    margin-left: 10px;
-}
-
-.sidebarIcon {
-    fill: var(--inverted-primary-color);
-}
-
 .isCollapsed {
     width: var(--sidebar-width-collapsed);
 
@@ -58,12 +43,5 @@
 
     .indentLanguageSwitcher {
         margin-left: 0;
-    }
-
-    .sidebarLink {
-        opacity: 0;
-        width: 0;
-        transition-duration: 0.2s;
-        transition-property: opacity;
     }
 }

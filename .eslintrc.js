@@ -28,10 +28,13 @@ module.exports = {
     'react/jsx-props-no-spreading': 'warn',
     'i18next/no-literal-string': ['error', {
       markupOnly: true,
-      ignoreAttribute: ["to", "className", "data-testid"]
+      ignoreAttribute: ["to", "className", "data-testid", "reducerKey"]
     }],
     '@typescript-eslint/space-before-function-paren': 'off',
     "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
-    "react-hooks/exhaustive-deps": "error" // Checks effect dependencies
+    "react-hooks/exhaustive-deps": "error", // Checks effect dependencies,
+    "@typescript-eslint/no-dynamic-delete": "off",
+    "react/display-name": "off",
+    "@typescript-eslint/no-invalid-void-type": "warn"
   }
 };
