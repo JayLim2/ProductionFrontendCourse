@@ -8,6 +8,7 @@ export interface SidebarItemType {
   path: string
   text: string
   icon: React.FunctionComponent<React.SVGAttributes<SVGElement>>
+  isProtected?: boolean
 }
 
 export const SidebarItemsList: SidebarItemType[] = [
@@ -24,6 +25,7 @@ export const SidebarItemsList: SidebarItemType[] = [
   {
     path: RoutePath.userProfile,
     icon: UserProfilePageIcon,
-    text: 'userProfilePageLinkTitle'
+    text: 'userProfilePageLinkTitle',
+    isProtected: true
   }
 ]

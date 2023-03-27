@@ -1,7 +1,12 @@
 {
   "userProfilePageTitle": "User Profile",
   "userProfilePageText": "CONTENT",
-  "editUserProfileButton": "Edit Profile",
+  "editUserProfileButton": "Edit",
+  "cancelEditingUserProfileButton": "Cancel",
+  "saveUserProfileButton": "Save",
   "inputFirstNameField": "First Name",
-  "inputLastNameField": "Last Name"
+  "inputLastNameField": "Last Name",
+  "userProfileLoadingErrorTitle": "We can't load profile",
+  "userProfileLoadingErrorText": "Something went wrong on our side. We know about it and in hurry to fix the issue.",
+  "avatarAltText": "User Avatar"
 }

@@ -26,10 +26,10 @@
   "profile": {
     "firstName": "Sergei",
     "lastName": "Komarov",
-    "age": 25,
-    "currency": "RUB",
-    "country": "Russia",
-    "city": "Samara",
+    "age": 22,
+    "currency": "USD",
+    "country": "China",
+    "city": "Samara 1",
     "username": "MrKomaroff",
     "avatar": "https://d.radikal.host/2023/03/22/my_avatar.jpg"
   },

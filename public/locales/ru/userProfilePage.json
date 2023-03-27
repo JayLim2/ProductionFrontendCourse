@@ -1,7 +1,12 @@
 {
   "userProfilePageTitle": "Профиль пользователя",
   "userProfilePageText": "КОНТЕНТ",
-  "editUserProfileButton": "Редактировать профиль",
+  "editUserProfileButton": "Редактировать",
+  "cancelEditingUserProfileButton": "Отмена",
+  "saveUserProfileButton": "Сохранить",
   "inputFirstNameField": "Имя",
-  "inputLastNameField": "Фамилия"
+  "inputLastNameField": "Фамилия",
+  "userProfileLoadingErrorTitle": "Не смогли загрузить профиль",
+  "userProfileLoadingErrorText": "Что-то пошло не так на нашей стороне. Мы уже знаем и спешим пофиксить.",
+  "avatarAltText": "Пользовательский Аватар"
 }
