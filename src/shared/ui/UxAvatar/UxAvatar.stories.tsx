@@ -2,7 +2,7 @@ import { type ComponentMeta, type ComponentStory } from '@storybook/react';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
 import { UxAvatar } from 'shared/ui/UxAvatar/UxAvatar';
-import StorybookAvatar from './storybook.avatar.png';
+import StorybookAvatar from 'shared/assets/tests/images/storybook.avatar.png';
 
 const componentMeta = {
   title: 'shared/UxAvatar',

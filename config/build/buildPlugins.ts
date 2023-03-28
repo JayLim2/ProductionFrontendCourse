@@ -6,7 +6,7 @@ import ReactRefreshPlugin from '@pmmmwh/react-refresh-webpack-plugin'
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 
 export function buildPlugins (options: BuildOptions): webpack.WebpackPluginInstance[] {
-  const { paths, isDev, apiBaseUrl } = options
+  const { paths, isDev, apiBaseUrl, project } = options
 
   const plugins = [
     new webpack.ProgressPlugin(),
@@ -21,7 +21,8 @@ export function buildPlugins (options: BuildOptions): webpack.WebpackPluginInsta
     // https://webpack.js.org/plugins/define-plugin/
     new webpack.DefinePlugin({
       __IS_DEV__: JSON.stringify(isDev),
-      __API__: JSON.stringify(apiBaseUrl)
+      __API__: JSON.stringify(apiBaseUrl),
+      __PROJECT__: JSON.stringify(project)
     }),
     new webpack.HotModuleReplacementPlugin()
   ];

@@ -20,6 +20,7 @@ export default (env: BuildEnv): webpack.Configuration => {
     port,
     paths,
     isDev: mode === 'development',
-    apiBaseUrl
+    apiBaseUrl,
+    project: 'frontend'
   })
 }
