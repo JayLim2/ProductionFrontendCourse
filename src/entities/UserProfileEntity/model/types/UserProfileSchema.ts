@@ -1,4 +1,5 @@
 import { type UserProfile } from './UserProfile';
+import { type UserProfileValidationError } from 'entities/UserProfileEntity/model/types/UserProfileValidationError';
 
 export interface UserProfileSchema {
   data?: UserProfile
@@ -6,4 +7,5 @@ export interface UserProfileSchema {
   isLoading: boolean
   error?: string
   isReadonly: boolean
+  validationError?: UserProfileValidationError[]
 }

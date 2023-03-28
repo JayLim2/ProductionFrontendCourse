@@ -26,6 +26,7 @@ export const userProfileSlice = createSlice({
     cancelEditingUserProfile: (state: UserProfileSchema) => {
       state.isReadonly = true;
       state.newData = state.data;
+      delete state.validationError;
     },
     saveUserProfile: (state: UserProfileSchema) => {
       state.isReadonly = true;
@@ -51,12 +52,13 @@ export const userProfileSlice = createSlice({
         state.error = action.payload;
       }) // Save User Profile Data
       .addCase(saveUserProfileData.pending, (state) => {
-        delete state.error;
+        delete state.validationError;
         state.isLoading = true;
       })
       .addCase(
         saveUserProfileData.fulfilled,
         (state, action: PayloadAction<UserProfile>) => {
+          delete state.validationError;
           state.isLoading = false;
           state.data = action.payload;
           state.newData = action.payload;
@@ -65,7 +67,7 @@ export const userProfileSlice = createSlice({
       )
       .addCase(saveUserProfileData.rejected, (state, action) => {
         state.isLoading = false;
-        state.error = action.payload;
+        state.validationError = action.payload;
       })
   }
 })

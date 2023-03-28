@@ -23,3 +23,4 @@ export { getUserProfileIsLoading } from '../UserProfileEntity/model/selectors/Ge
 export { getUserProfileError } from '../UserProfileEntity/model/selectors/GetUserProfileError/GetUserProfileError'
 export { getUserProfileReadonly } from '../UserProfileEntity/model/selectors/GetUserProfileReadonly/GetUserProfileReadonly'
 export { getUserProfileNewData } from '../UserProfileEntity/model/selectors/GetUserProfileNewData/GetUserProfileNewData'
+export { getUserProfileDataValidationError } from '../UserProfileEntity/model/selectors/GetUserProfileDataValidationError/GetUserProfileDataValidationError'
