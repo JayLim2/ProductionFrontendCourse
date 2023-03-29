@@ -4,7 +4,7 @@ import { AboutPage } from 'pages/AboutPage'
 import { NotFoundPage } from 'pages/NotFoundPage';
 import { UserProfilePage } from 'pages/UserProfilePage/ui/UserProfilePage.lazy';
 
-type AppRoutesProps = RouteProps & {
+export type AppRoutesProps = RouteProps & {
   isProtected?: boolean
 };
 export enum AppRoutes {
