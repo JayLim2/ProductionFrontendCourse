@@ -5,6 +5,8 @@
   "mainPageLinkTitle": "Main Page",
   "aboutPageLinkTitle": "About us",
   "userProfilePageLinkTitle": "Profile",
+  "listArticlesPageLinkTitle": "List of Articles",
+  "articleDetailsPageLinkTitle": "Article Details",
   "loadingText": "Loading...",
   "loginButton": "Sign In",
   "logoutButton": "Log Out",
