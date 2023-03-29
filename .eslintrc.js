@@ -28,7 +28,7 @@ module.exports = {
     'react/jsx-props-no-spreading': 'warn',
     'i18next/no-literal-string': ['error', {
       markupOnly: true,
-      ignoreAttribute: ["to", "className", "data-testid", "reducerKey"]
+      ignoreAttribute: ["to", "className", "data-testid", "reducerKey", "alignTitle", "alignText"]
     }],
     '@typescript-eslint/space-before-function-paren': 'off',
     "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks

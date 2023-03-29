@@ -13,6 +13,7 @@ export interface BuildOptions {
   isDev: boolean
   port: number
   apiBaseUrl: string
+  project: 'frontend' | 'storybook' | 'jest'
 }
 
 export interface BuildEnv {

@@ -1,0 +1,23 @@
+.UxSelectWrapper {
+
+}
+
+.UxSelect {
+    background: none;
+    outline: none;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+
+    .UxOption {
+        background-color: var(--primary-color);
+        color: var(--bg-color);
+    }
+}
+
+.label {
+    color: var(--primary-color);
+}
+
+.label > select {
+    margin-left: 10px;
+}

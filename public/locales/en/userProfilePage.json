@@ -1,7 +1,21 @@
 {
   "userProfilePageTitle": "User Profile",
   "userProfilePageText": "CONTENT",
-  "editUserProfileButton": "Edit Profile",
+  "editUserProfileButton": "Edit",
+  "cancelEditingUserProfileButton": "Cancel",
+  "saveUserProfileButton": "Save",
   "inputFirstNameField": "First Name",
-  "inputLastNameField": "Last Name"
+  "inputLastNameField": "Last Name",
+  "userProfileLoadingErrorTitle": "We can't load profile",
+  "userProfileLoadingErrorText": "Something went wrong on our side. We know about it and in hurry to fix the issue.",
+  "avatarAltText": "User Avatar",
+  "validationErrorIncorrectFirstName": "First name has been filled wrong way",
+  "validationErrorIncorrectLastName": "Last name has been filled wrong way",
+  "validationErrorIncorrectUsername": "Username has been filled wrong way",
+  "validationErrorIncorrectCountry": "Country has been filled wrong way",
+  "validationErrorIncorrectCity": "City has been filled wrong way",
+  "validationErrorIncorrectCurrency": "Currency has been filled wrong way",
+  "validationErrorIncorrectAge": "Age has been filled wrong way",
+  "validationErrorServerError": "Internal server error",
+  "validationErrorNoData": "User profile data hasn't been loaded successfully"
 }

@@ -1,4 +1,4 @@
-import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames, type Modifiers } from 'shared/lib/classNames/classNames';
 import styles from './UxInput.module.scss';
 import {
   type MutableRefObject,
@@ -10,15 +10,16 @@ import {
 } from 'react';
 import type React from 'react';
 
-type ExcludedHTMLInputAttributes = 'value' | 'onChange';
+type ExcludedHTMLInputAttributes = 'value' | 'onChange' | 'readOnly';
 
 type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, ExcludedHTMLInputAttributes>
 
 interface UxInputProps extends HTMLInputProps {
   className?: string
-  value?: string
-  onChange?: (value: string) => void
+  value?: string | number
+  onChange?: (value: any) => void
   autoFocus?: boolean
+  readOnly?: boolean
 }
 
 const UxInput: FC<UxInputProps> = memo((props: UxInputProps) => {
@@ -28,6 +29,7 @@ const UxInput: FC<UxInputProps> = memo((props: UxInputProps) => {
     value,
     onChange,
     autoFocus = false,
+    readOnly = false,
     ...otherProps
   } = props;
 
@@ -43,11 +45,16 @@ const UxInput: FC<UxInputProps> = memo((props: UxInputProps) => {
     onChange?.(e.target.value);
   }
 
+  const modifiers: Modifiers = {
+    [styles.readOnly]: readOnly
+  }
+
   return (
-    <input className={classNames(styles.UxInput, {}, [className])}
+    <input className={classNames(styles.UxInput, modifiers, [className])}
            ref={inputRef}
            type={type}
            value={value}
+           readOnly={readOnly}
            onChange={onChangeHandler}
            {...otherProps}
     />

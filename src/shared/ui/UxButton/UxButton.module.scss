@@ -21,6 +21,11 @@
     border: 1px solid var(--primary-color);
     color: var(--primary-color);
     background-color: transparent;
+
+    &_red {
+        border-color: var(--dark-red-color);
+        color: var(--dark-red-color);
+    }
 }
 
 .background {

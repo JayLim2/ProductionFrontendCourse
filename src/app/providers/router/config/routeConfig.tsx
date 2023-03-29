@@ -4,6 +4,9 @@ import { AboutPage } from 'pages/AboutPage'
 import { NotFoundPage } from 'pages/NotFoundPage';
 import { UserProfilePage } from 'pages/UserProfilePage/ui/UserProfilePage.lazy';
 
+type AppRoutesProps = RouteProps & {
+  isProtected?: boolean
+};
 export enum AppRoutes {
   MAIN = 'main',
   ABOUT = 'about',
@@ -19,7 +22,7 @@ export const RoutePath: Record<AppRoutes, string> = {
   [AppRoutes.NOT_FOUND]: '*'
 }
 
-export const routeConfig: Record<AppRoutes, RouteProps> = {
+export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
   [AppRoutes.MAIN]: {
     path: RoutePath.main,
     element: <MainPage />
@@ -30,7 +33,8 @@ export const routeConfig: Record<AppRoutes, RouteProps> = {
   },
   [AppRoutes.USER_PROFILE]: {
     path: RoutePath.userProfile,
-    element: <UserProfilePage />
+    element: <UserProfilePage />,
+    isProtected: true
   },
   [AppRoutes.NOT_FOUND]: {
     path: RoutePath.notFound,

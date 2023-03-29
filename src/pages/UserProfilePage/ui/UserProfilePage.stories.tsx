@@ -3,6 +3,8 @@ import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDeco
 import { Theme } from 'app/providers/ThemeProvider';
 import UserProfilePage from './UserProfilePage';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
+import { Currency } from 'entities/Currency';
+import { Country } from 'entities/Country';
 
 const componentMeta = {
   title: 'pages/UserProfilePage',
@@ -20,8 +22,34 @@ const Template: ComponentStory<typeof UserProfilePage> = (args) => <UserProfileP
 
 export const Light = Template.bind({});
 Light.args = {};
-Light.decorators = [StoreDecorator({})];
+Light.decorators = [StoreDecorator({
+  userProfile: {
+    newData: {
+      firstName: 'Sergei',
+      lastName: 'Komarov',
+      age: 22,
+      currency: Currency.USD,
+      country: Country.CN,
+      city: 'Samara 1',
+      username: 'Komaroff',
+      avatar: 'https://d.radikal.host/2023/03/22/my_avatar.jpg'
+    }
+  }
+})];
 
 export const Dark = Template.bind({});
 Dark.args = {};
-Dark.decorators = [ThemeDecorator(Theme.DARK), StoreDecorator({})];
+Dark.decorators = [ThemeDecorator(Theme.DARK), StoreDecorator({
+  userProfile: {
+    newData: {
+      firstName: 'Sergei',
+      lastName: 'Komarov',
+      age: 22,
+      currency: Currency.USD,
+      country: Country.CN,
+      city: 'Samara 1',
+      username: 'Komaroff',
+      avatar: 'https://d.radikal.host/2023/03/22/my_avatar.jpg'
+    }
+  }
+})];

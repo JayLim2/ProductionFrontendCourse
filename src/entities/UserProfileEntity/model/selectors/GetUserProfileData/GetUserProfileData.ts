@@ -1,6 +1,6 @@
 import { type UserProfile } from '../../types/UserProfile';
-import { type UserProfileSchema } from '../../types/UserProfileSchema';
+import { type StateSchema } from 'app/providers/StoreProvider';
 
-export const getUserProfileData = (state: UserProfileSchema): UserProfile | null => {
-  return state?.data || null;
+export const getUserProfileData = (state: StateSchema): UserProfile | undefined => {
+  return state?.userProfile?.data;
 }

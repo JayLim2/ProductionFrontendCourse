@@ -1,7 +1,21 @@
 {
   "userProfilePageTitle": "Профиль пользователя",
   "userProfilePageText": "КОНТЕНТ",
-  "editUserProfileButton": "Редактировать профиль",
+  "editUserProfileButton": "Редактировать",
+  "cancelEditingUserProfileButton": "Отмена",
+  "saveUserProfileButton": "Сохранить",
   "inputFirstNameField": "Имя",
-  "inputLastNameField": "Фамилия"
+  "inputLastNameField": "Фамилия",
+  "userProfileLoadingErrorTitle": "Не смогли загрузить профиль",
+  "userProfileLoadingErrorText": "Что-то пошло не так на нашей стороне. Мы уже знаем и спешим пофиксить.",
+  "avatarAltText": "Пользовательский Аватар",
+  "validationErrorIncorrectFirstName": "Не заполнено или неверно заполнено имя",
+  "validationErrorIncorrectLastName": "Не заполнено или неверно заполнена фамилия",
+  "validationErrorIncorrectUsername": "Не заполнено или неверно заполнено имя пользователя",
+  "validationErrorIncorrectCountry": "Не заполнено или неверно заполнена страна",
+  "validationErrorIncorrectCity": "Не заполнено или неверно заполнен город",
+  "validationErrorIncorrectCurrency": "Не заполнено или неверно заполнена валюта",
+  "validationErrorIncorrectAge": "Не заполнено или неверно заполнен возраст",
+  "validationErrorServerError": "Внутренняя ошибка сервера",
+  "validationErrorNoData": "Данные профиля не были загружены"
 }

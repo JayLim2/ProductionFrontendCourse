@@ -1,5 +1,5 @@
-import { type UserProfileSchema } from '../../types/UserProfileSchema';
+import { type StateSchema } from 'app/providers/StoreProvider';
 
-export const getUserProfileError = (state: UserProfileSchema): string => {
-  return state?.error || '';
+export const getUserProfileError = (state: StateSchema): string => {
+  return state?.userProfile?.error || '';
 }

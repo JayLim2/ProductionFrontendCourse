@@ -1,5 +1,5 @@
-import { type UserProfileSchema } from '../../types/UserProfileSchema';
+import { type StateSchema } from 'app/providers/StoreProvider';
 
-export const getUserProfileIsLoading = (state: UserProfileSchema): boolean => {
-  return state?.isLoading || false;
+export const getUserProfileIsLoading = (state: StateSchema): boolean => {
+  return state?.userProfile?.isLoading || false;
 }
