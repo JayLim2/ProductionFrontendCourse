@@ -17,9 +17,11 @@ const getSkeletons = (view: ArticleView): ReactNode[] =>
   new Array(view === ArticleView.SMALL ? 9 : 3)
     .fill(0)
     .map((item, index) => (
-            <ArticleListItemSkeleton key={index}
-                                     className={styles.card}
-                                     view={view}/>
+            <ArticleListItemSkeleton
+                key={index}
+                className={styles.card}
+                view={view}
+            />
     ));
 
 export const ArticleList = memo((props: ArticleListProps) => {
