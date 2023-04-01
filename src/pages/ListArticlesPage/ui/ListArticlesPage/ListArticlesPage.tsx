@@ -13,10 +13,10 @@ import {
 } from '../../model/selectors/ListArticlesPageSelectors';
 import { getArticles, listArticlesPageActions, listArticlesPageReducer } from '../../model/slice/ListArticlesPageSlice';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
-import { fetchListArticles } from 'pages/ListArticlesPage/model/services/FetchListArticles/FetchListArticles';
 import { DynamicModuleLoader, type ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { UxPage } from 'shared/ui/UxPage/UxPage';
 import { fetchNextArticlesPage } from '../../model/services/FetchNextArticlesPage/FetchNextArticlesPage';
+import { initListArticlesPage } from 'pages/ListArticlesPage/model/services/InitListArticlesPage/InitListArticlesPage';
 
 interface ListArticlesPageProps {
   className?: string
@@ -36,10 +36,7 @@ const ListArticlesPage: FC<ListArticlesPageProps> = (props: ListArticlesPageProp
   // const error = useSelector(getArticlesPageError);
 
   useInitialEffect(() => {
-    dispatch(listArticlesPageActions.initState());
-    void dispatch(fetchListArticles({
-      page: 1
-    }));
+    void dispatch(initListArticlesPage());
   });
 
   const onChangeView = useCallback((view: ArticleView) => {

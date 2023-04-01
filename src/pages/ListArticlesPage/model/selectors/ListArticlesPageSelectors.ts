@@ -22,3 +22,9 @@ export const getArticlesPageLimit = (state: StateSchema): number => {
 export const getArticlesPageHasMore = (state: StateSchema): boolean => {
   return state.listArticles?.hasMore || false;
 };
+
+// Initializing
+
+export const getArticlesPageInitialized = (state: StateSchema): boolean => {
+  return state.listArticles?._initialized || false;
+}

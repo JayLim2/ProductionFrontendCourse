@@ -35,11 +35,14 @@ export interface ReduxStoreWithReducerManager extends EnhancedStore<StateSchema>
   reducerManager: ReducerManager
 }
 
+export type MountedReducersList = OptionalRecord<StateSchemaKey, boolean>;
+
 export interface ReducerManager {
   getReducerMap: () => ReducersMapObject<StateSchema>
   reduce: (state: StateSchema, action: AnyAction) => CombinedState<StateSchema>
   add: (key: StateSchemaKey, reducer: Reducer) => void
   remove: (key: StateSchemaKey) => void
+  getMountedReducers: () => MountedReducersList
 }
 
 export interface ThunkExtraArgument {

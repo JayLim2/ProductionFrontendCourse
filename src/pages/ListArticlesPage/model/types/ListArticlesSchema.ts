@@ -10,4 +10,7 @@ export interface ListArticlesSchema extends EntityState<Article> {
   page: number
   limit?: number
   hasMore: boolean
+
+  // Other
+  _initialized: boolean
 }

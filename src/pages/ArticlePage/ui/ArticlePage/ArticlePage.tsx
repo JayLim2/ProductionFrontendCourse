@@ -22,6 +22,7 @@ import { AddCommentForm } from 'features/AddCommentForm';
 import { addCommentForArticle } from '../../model/services/AddCommentForArticle/AddCommentForArticle';
 import { ButtonTheme, UxButton } from 'shared/ui/UxButton/UxButton';
 import { RoutePath } from 'app/providers/router/config/routeConfig';
+import { UxPage } from 'shared/ui/UxPage/UxPage';
 
 interface ArticlePageProps {
   className?: string
@@ -67,7 +68,7 @@ const ArticlePage: FC<ArticlePageProps> = (props: ArticlePageProps) => {
 
   return (
         <DynamicModuleLoader reducers={reducersList}>
-            <div className={classNames(styles.ArticlePage, {}, [className])}>
+            <UxPage className={classNames(styles.ArticlePage, {}, [className])}>
                 <UxButton theme={ButtonTheme.OUTLINE}
                           onClick={onBackToList}
                 >
@@ -80,7 +81,7 @@ const ArticlePage: FC<ArticlePageProps> = (props: ArticlePageProps) => {
                     isLoading={isLoading}
                     comments={comments}
                 />
-            </div>
+            </UxPage>
         </DynamicModuleLoader>
   );
 };

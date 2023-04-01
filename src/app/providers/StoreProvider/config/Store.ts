@@ -12,8 +12,7 @@ export type NavigateToFunction = (to: To, options?: NavigateOptions) => void;
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export function createReduxStore(
   initialState?: StateSchema,
-  asyncReducers?: ReducersMapObject<StateSchema>,
-  navigateFn?: NavigateToFunction
+  asyncReducers?: ReducersMapObject<StateSchema>
 ) {
   const rootReducers: ReducersMapObject<StateSchema> = {
     ...asyncReducers,
@@ -31,8 +30,7 @@ export function createReduxStore(
     middleware: (getDefaultMiddleware) => getDefaultMiddleware({
       thunk: {
         extraArgument: {
-          api: $api,
-          navigate: navigateFn
+          api: $api
         }
       }
     })
