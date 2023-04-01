@@ -22,9 +22,7 @@ const App: FC<any> = () => {
         <NavigationBar/>
         <div className="content-page">
           <Sidebar/>
-          <div className="page-wrapper">
-            {authDataInitialized && <AppRouter/>}
-          </div>
+          {authDataInitialized && <AppRouter/>}
         </div>
       </Suspense>
     </div>

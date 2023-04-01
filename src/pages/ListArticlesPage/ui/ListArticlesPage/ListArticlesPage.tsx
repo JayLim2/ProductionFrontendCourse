@@ -15,6 +15,8 @@ import { getArticles, listArticlesPageActions, listArticlesPageReducer } from '.
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { fetchListArticles } from 'pages/ListArticlesPage/model/services/FetchListArticles/FetchListArticles';
 import { DynamicModuleLoader, type ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { UxPage } from 'shared/ui/UxPage/UxPage';
+import { fetchNextArticlesPage } from '../../model/services/FetchNextArticlesPage/FetchNextArticlesPage';
 
 interface ListArticlesPageProps {
   className?: string
@@ -34,17 +36,25 @@ const ListArticlesPage: FC<ListArticlesPageProps> = (props: ListArticlesPageProp
   // const error = useSelector(getArticlesPageError);
 
   useInitialEffect(() => {
-    void dispatch(fetchListArticles());
     dispatch(listArticlesPageActions.initState());
+    void dispatch(fetchListArticles({
+      page: 1
+    }));
   });
 
   const onChangeView = useCallback((view: ArticleView) => {
     dispatch(listArticlesPageActions.setView(view));
   }, [dispatch]);
 
+  const onLoadNextPart = useCallback(() => {
+    void dispatch(fetchNextArticlesPage());
+  }, [dispatch]);
+
   return (
       <DynamicModuleLoader reducers={reducersList}>
-        <div className={classNames(styles.ListArticlesPage, {}, [className])}>
+        <UxPage className={classNames(styles.ListArticlesPage, {}, [className])}
+                onScrollEnd={onLoadNextPart}
+        >
           <ArticleViewSelector
               view={view}
               onViewClick={onChangeView}
@@ -54,7 +64,7 @@ const ListArticlesPage: FC<ListArticlesPageProps> = (props: ListArticlesPageProp
               view={view}
               articles={articlesList}
           />
-        </div>
+        </UxPage>
       </DynamicModuleLoader>
   );
 };
