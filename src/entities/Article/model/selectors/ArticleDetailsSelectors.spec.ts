@@ -1,18 +1,8 @@
-import { type ComponentMeta, type ComponentStory } from '@storybook/react';
-import ArticlePage from './ArticlePage';
-import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
+import { type StateSchema } from 'app/providers/StoreProvider';
 import { type Article, ArticleBlockType, ArticleType } from 'entities/Article';
-
-const componentMeta = {
-  title: 'pages/ArticlePage',
-  component: ArticlePage,
-  argTypes: {
-    backgroundColor: { control: 'color' }
-  }
-};
-export default componentMeta as ComponentMeta<typeof ArticlePage>;
-
-const Template: ComponentStory<typeof ArticlePage> = (args) => <ArticlePage {...args} />;
+import { getArticleDetailsData } from './GetArticleDetailsData/GetArticleDetailsData';
+import { getArticleDetailsIsLoading } from './GetArticleDetailsIsLoading/GetArticleDetailsIsLoading';
+import { getArticleDetailsError } from './GetArticleDetailsError/GetArticleDetailsError';
 
 const article: Article = {
   id: '1',
@@ -49,11 +39,61 @@ const article: Article = {
     }
   ]
 };
+describe('Test for GetArticleDetailsData', () => {
+  test('should fetch Article from store if it is present', () => {
+    const state: DeepPartial<StateSchema> = {
+      article: {
+        data: article
+      }
+    };
+    expect(getArticleDetailsData(state as StateSchema)).toEqual(article);
+  });
 
-export const Normal = Template.bind({});
-Normal.args = {};
-Normal.decorators = [StoreDecorator({
-  article: {
-    data: article
-  }
-})];
+  test('should return "undefined" if it is absent', () => {
+    const state: DeepPartial<StateSchema> = {
+      article: undefined
+    };
+    expect(getArticleDetailsData(state as StateSchema)).toBeUndefined();
+  });
+
+  test('should return error from store if it is present', () => {
+    const state: DeepPartial<StateSchema> = {
+      article: {
+        error: 'error'
+      }
+    };
+    expect(getArticleDetailsError(state as StateSchema)).toEqual('error');
+  });
+
+  test('should return "undefined" if error is absent', () => {
+    const state: DeepPartial<StateSchema> = {
+      article: {
+        error: undefined
+      }
+    };
+    expect(getArticleDetailsError(state as StateSchema)).toBeUndefined();
+  });
+
+  test('should return "isLoading" boolean flag = true from store if it is present & equal "true"', () => {
+    const state: DeepPartial<StateSchema> = {
+      article: {
+        isLoading: true
+      }
+    };
+    expect(getArticleDetailsIsLoading(state as StateSchema)).toEqual(true);
+  });
+
+  test('should return "isLoading" boolean flag = false from store if it is present & equal "false"', () => {
+    const state: DeepPartial<StateSchema> = {
+      article: {
+        isLoading: false
+      }
+    };
+    expect(getArticleDetailsIsLoading(state as StateSchema)).toEqual(false);
+  });
+
+  test('should return "isLoading" = false from store by default', () => {
+    const state: DeepPartial<StateSchema> = {};
+    expect(getArticleDetailsIsLoading(state as StateSchema)).toEqual(false);
+  });
+});

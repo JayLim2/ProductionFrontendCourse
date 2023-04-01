@@ -1,18 +1,6 @@
-import { type ComponentMeta, type ComponentStory } from '@storybook/react';
-import ArticlePage from './ArticlePage';
-import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
+import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
+import { fetchArticleById } from 'entities/Article/model/services/FetchArticleById/FetchArticleById';
 import { type Article, ArticleBlockType, ArticleType } from 'entities/Article';
-
-const componentMeta = {
-  title: 'pages/ArticlePage',
-  component: ArticlePage,
-  argTypes: {
-    backgroundColor: { control: 'color' }
-  }
-};
-export default componentMeta as ComponentMeta<typeof ArticlePage>;
-
-const Template: ComponentStory<typeof ArticlePage> = (args) => <ArticlePage {...args} />;
 
 const article: Article = {
   id: '1',
@@ -50,10 +38,33 @@ const article: Article = {
   ]
 };
 
-export const Normal = Template.bind({});
-Normal.args = {};
-Normal.decorators = [StoreDecorator({
-  article: {
-    data: article
-  }
-})];
+interface PromiseArticle {
+  data?: Article
+}
+describe('Test for FetchArticleById', () => {
+  test('should invoke "get" and return completely the article', async () => {
+    const asyncThunk = new TestAsyncThunk(fetchArticleById);
+
+    asyncThunk.api.get.mockReturnValue(Promise.resolve<PromiseArticle>({
+      data: article
+    }));
+    const result = await asyncThunk.callThunk('article_id_1234');
+
+    expect(asyncThunk.api.get).toHaveBeenCalled();
+    expect(result.meta.requestStatus).toBe('fulfilled');
+    expect(result.payload).toEqual(article);
+  });
+
+  test('should invoke "get", reject request and return error', async () => {
+    const asyncThunk = new TestAsyncThunk(fetchArticleById);
+
+    asyncThunk.api.get.mockReturnValue(Promise.resolve<PromiseArticle>({
+      data: undefined
+    }));
+    const result = await asyncThunk.callThunk('article_id_1234');
+
+    expect(asyncThunk.api.get).toHaveBeenCalled();
+    expect(result.meta.requestStatus).toBe('rejected');
+    expect(result.payload).toEqual('ERROR_CODE');
+  });
+});

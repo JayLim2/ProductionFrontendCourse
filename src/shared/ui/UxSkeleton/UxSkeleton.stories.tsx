@@ -5,7 +5,7 @@ import { Theme } from 'app/providers/ThemeProvider';
 import { UxSkeleton } from './UxSkeleton';
 
 const componentMeta = {
-  title: 'shared/Skeleton',
+  title: 'shared/UxSkeleton',
   component: UxSkeleton,
   argTypes: {
     backgroundColor: { control: 'color' }

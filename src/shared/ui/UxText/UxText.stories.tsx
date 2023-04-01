@@ -1,7 +1,7 @@
 import { type ComponentMeta, type ComponentStory } from '@storybook/react';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
-import { TextTheme, UxText } from 'shared/ui/UxText/UxText';
+import { TextSize, TextTheme, UxText } from 'shared/ui/UxText/UxText';
 
 const componentMeta = {
   title: 'shared/UxText',
@@ -67,3 +67,17 @@ ErrorDark.args = {
   theme: TextTheme.ERROR
 };
 ErrorDark.decorators = [ThemeDecorator(Theme.DARK)];
+
+export const LighSizeL = Template.bind({});
+LighSizeL.args = {
+  title: 'Large Text',
+  text: 'Description Description Description Description',
+  size: TextSize.L
+};
+
+export const DarkSizeL = Template.bind({});
+DarkSizeL.args = {
+  title: 'Large Text',
+  text: 'Description Description Description Description',
+  size: TextSize.L
+};

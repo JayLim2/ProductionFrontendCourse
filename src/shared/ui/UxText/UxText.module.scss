@@ -21,3 +21,25 @@
         color: var(--dark-red-color);
     }
 }
+
+/* Font sizes */
+
+.size_medium {
+    .title {
+        font: var(--font-l);
+    }
+
+    .text {
+        font: var(--font-m);
+    }
+}
+
+.size_large {
+    .title {
+        font: var(--font-xl);
+    }
+
+    .text {
+        font: var(--font-l);
+    }
+}

@@ -4,7 +4,7 @@ import { type FC, memo, useCallback, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { DynamicModuleLoader, type ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { articleReducer } from '../../model/slice/ArticleSlice';
-import { TextSize, TextTheme, UxText } from 'shared/ui/UxText/UxText';
+import { AlignText, TextSize, TextTheme, UxText } from 'shared/ui/UxText/UxText';
 import { UxAvatar } from 'shared/ui/UxAvatar/UxAvatar';
 import { fetchArticleById } from '../../model/services/FetchArticleById/FetchArticleById';
 import {
@@ -93,8 +93,8 @@ export const ArticleDetails: FC<ArticleDetailsProps> = memo((props: ArticleDetai
   } else if (error) {
     content = (
         <UxText
-            alignTitle='center'
-            alignText='center'
+            alignTitle={AlignText.CENTER}
+            alignText={AlignText.CENTER}
             title={t('articleLoadingErrorTitle')}
             theme={TextTheme.ERROR}
         />

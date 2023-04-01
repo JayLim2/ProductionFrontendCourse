@@ -8,7 +8,11 @@ export enum TextTheme {
   ERROR = 'error'
 }
 
-type AlignText = 'left' | 'center' | 'right';
+export enum AlignText {
+  LEFT = 'left',
+  CENTER = 'center',
+  RIGHT = 'right'
+}
 
 export enum TextSize {
   M = 'size_medium',
@@ -31,8 +35,8 @@ export const UxText: FC<UxTextProps> = memo((props: UxTextProps) => {
     title,
     text,
     theme = Theme.DEFAULT,
-    alignTitle = 'left',
-    alignText = 'left',
+    alignTitle = AlignText.LEFT,
+    alignText = AlignText.LEFT,
     size = TextSize.M
   } = props;
 

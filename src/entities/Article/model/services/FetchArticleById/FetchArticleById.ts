@@ -15,7 +15,7 @@ export const fetchArticleById = createAsyncThunk<Article, string, ThunkConfigura
       return response.data;
     } catch (e) {
       console.log(e);
-      return rejectWithValue('error');
+      return rejectWithValue('ERROR_CODE');
     }
   }
 );
