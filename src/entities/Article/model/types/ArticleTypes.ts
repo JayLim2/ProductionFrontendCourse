@@ -1,4 +1,5 @@
 import { type ArticleBlock } from './ArticleBlockTypes';
+import { type User } from 'entities/UserEntity';
 
 export enum ArticleType {
   IT = 'IT',
@@ -8,6 +9,7 @@ export enum ArticleType {
 
 export interface Article {
   id: string
+  user: User
   title: string
   subtitle: string
   img: string

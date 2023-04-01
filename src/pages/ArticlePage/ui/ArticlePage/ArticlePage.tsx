@@ -2,7 +2,7 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import styles from './ArticlePage.module.scss';
 import { type FC, memo, useCallback } from 'react';
 import { ArticleDetails } from 'entities/Article';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { TextTheme, UxText } from 'shared/ui/UxText/UxText';
 import { useTranslation } from 'react-i18next';
 import { CommentList } from 'entities/Comment';
@@ -10,7 +10,7 @@ import { DynamicModuleLoader, type ReducersList } from 'shared/lib/components/Dy
 import { articleCommentsReducer, getArticleComments } from '../../model/slice/ArticleCommentsSlice';
 import { useSelector } from 'react-redux';
 import {
-  getArticleCommentsError,
+  // getArticleCommentsError,
   getArticleCommentsIsLoading
 } from '../../model/selectors/CommentsSelectors';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
@@ -20,6 +20,8 @@ import {
 import { useTypedDispatch } from 'shared/lib/hooks/useTypedDispatch/useTypedDispatch';
 import { AddCommentForm } from 'features/AddCommentForm';
 import { addCommentForArticle } from '../../model/services/AddCommentForArticle/AddCommentForArticle';
+import { ButtonTheme, UxButton } from 'shared/ui/UxButton/UxButton';
+import { RoutePath } from 'app/providers/router/config/routeConfig';
 
 interface ArticlePageProps {
   className?: string
@@ -37,11 +39,16 @@ const ArticlePage: FC<ArticlePageProps> = (props: ArticlePageProps) => {
   const dispatch = useTypedDispatch();
   const comments = useSelector(getArticleComments.selectAll);
   const isLoading = useSelector(getArticleCommentsIsLoading);
-  const error = useSelector(getArticleCommentsError);
+  // const error = useSelector(getArticleCommentsError);
+  const navigate = useNavigate();
 
   useInitialEffect(() => {
     void dispatch(fetchCommentsByArticleId(id));
   });
+
+  const onBackToList = useCallback(() => {
+    navigate(RoutePath.articles);
+  }, [navigate]);
 
   const onSendComment = useCallback((text: string) => {
     void dispatch(addCommentForArticle(text));
@@ -61,6 +68,11 @@ const ArticlePage: FC<ArticlePageProps> = (props: ArticlePageProps) => {
   return (
         <DynamicModuleLoader reducers={reducersList}>
             <div className={classNames(styles.ArticlePage, {}, [className])}>
+                <UxButton theme={ButtonTheme.OUTLINE}
+                          onClick={onBackToList}
+                >
+                    {t('backToArticlesCatalogue')}
+                </UxButton>
                 <ArticleDetails id={id}/>
                 <UxText className={styles.commentTitle} title={t('commentsSectionHeader')} />
                 <AddCommentForm onSendComment={onSendComment} />

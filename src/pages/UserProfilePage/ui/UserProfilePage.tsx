@@ -1,6 +1,6 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import styles from './UserProfilePage.module.scss';
-import { type FC, useCallback, useEffect } from 'react';
+import { type FC, useCallback } from 'react';
 import { DynamicModuleLoader, type ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import {
   fetchUserProfileData,

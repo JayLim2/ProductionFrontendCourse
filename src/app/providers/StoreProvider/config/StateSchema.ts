@@ -14,6 +14,7 @@ import { type NavigateToFunction } from 'app/providers/StoreProvider/config/Stor
 import { type ArticleSchema } from 'entities/Article';
 import { type ArticleCommentsSchema } from 'pages/ArticlePage';
 import { type AddCommentFormSchema } from 'features/AddCommentForm/model/types/AddCommentFormSchema';
+import { type ListArticlesSchema } from 'pages/ListArticlesPage';
 
 export interface StateSchema {
   counter: CounterSchema
@@ -25,6 +26,7 @@ export interface StateSchema {
   article?: ArticleSchema
   articleComments?: ArticleCommentsSchema
   addCommentForm?: AddCommentFormSchema
+  listArticles?: ListArticlesSchema
 }
 
 export type StateSchemaKey = keyof StateSchema;

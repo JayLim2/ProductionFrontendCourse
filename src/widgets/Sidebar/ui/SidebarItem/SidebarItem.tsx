@@ -2,7 +2,7 @@ import styles from './SidebarItem.module.scss';
 import { type FC, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { UxLink, UxLinkTheme } from 'shared/ui/UxLink/UxLink';
-import { type SidebarItemType } from 'widgets/Sidebar/model/SidebarItemType';
+import { type SidebarItemType } from 'widgets/Sidebar/model/types/SidebarItemType';
 import { classNames, type Modifiers } from 'shared/lib/classNames/classNames';
 import { useSelector } from 'react-redux';
 import { getUserAuthData } from 'entities/UserEntity';

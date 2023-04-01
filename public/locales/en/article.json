@@ -1,5 +1,7 @@
 {
   "articleIdNotDefined": "Article ID is not defined. Please ensure that URL is correct",
   "articleLoadingErrorTitle": "Article is not found or cannot be loaded",
-  "commentsSectionHeader": "Comments"
+  "commentsSectionHeader": "Comments",
+  "readMoreButton": "Read More",
+  "backToArticlesCatalogue": "Back to Catalogue"
 }

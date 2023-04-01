@@ -1,11 +1,12 @@
 import { classNames, type Modifiers } from 'shared/lib/classNames/classNames'
 import styles from './Sidebar.module.scss'
-import { memo, useState } from 'react'
+import { memo, useMemo, useState } from 'react'
 import { ButtonSize, ButtonTheme, UxButton } from 'shared/ui/UxButton/UxButton'
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher'
 import { LanguageSwitcher } from 'widgets/LanguageSwitcher'
 import { SidebarItem } from '../SidebarItem/SidebarItem';
-import { SidebarItemsList } from 'widgets/Sidebar/model/SidebarItemsList';
+import { getSidebarItems } from 'widgets/Sidebar/model/selectors/GetSidebarItems';
+import { useSelector } from 'react-redux';
 
 interface SidebarProps {
   className?: string
@@ -14,6 +15,17 @@ interface SidebarProps {
 export const Sidebar = memo((props: SidebarProps) => {
   const { className } = props
   const [isCollapsed, setCollapsed] = useState(false)
+  const sidebarItemsList = useSelector(getSidebarItems);
+
+  const jsxSidebarItemsList = useMemo(() => {
+    return sidebarItemsList.map(sidebarItem => (
+          <SidebarItem
+              key={sidebarItem.path}
+              item={sidebarItem}
+              isCollapsed={isCollapsed}
+          />
+    ));
+  }, [isCollapsed, sidebarItemsList]);
 
   const onToggleCollapsed = (): void => {
     setCollapsed(prevIsCollapsed => !prevIsCollapsed)
@@ -28,13 +40,7 @@ export const Sidebar = memo((props: SidebarProps) => {
              className={classNames(styles.Sidebar, modifiers, [className])}
         >
             <div className={styles.sidebarLinksContainer}>
-                {SidebarItemsList.map(sidebarItem => (
-                    <SidebarItem
-                        key={sidebarItem.path}
-                        item={sidebarItem}
-                        isCollapsed={isCollapsed}
-                    />
-                ))}
+                {jsxSidebarItemsList}
             </div>
 
             <UxButton

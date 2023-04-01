@@ -8,7 +8,7 @@ import { useTypedDispatch } from 'shared/lib/hooks/useTypedDispatch/useTypedDisp
 import { DynamicModuleLoader, type ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { addCommentFormActions, addCommentFormReducer } from '../../model/slices/AddCommentFormSlice';
 import {
-  getAddCommentFormError,
+  // getAddCommentFormError,
   getAddCommentFormText
 } from '../../model/selectors/AddCommentFormSelectors';
 import styles from './AddCommentForm.module.scss';
@@ -26,7 +26,7 @@ const AddCommentForm = memo((props: AddCommentFormProps) => {
   const { className, onSendComment } = props;
   const { t } = useTranslation('comment');
   const text = useSelector(getAddCommentFormText);
-  const error = useSelector(getAddCommentFormError);
+  // const error = useSelector(getAddCommentFormError);
   const dispatch = useTypedDispatch();
 
   const onCommentTextChange = useCallback((value: string) => {

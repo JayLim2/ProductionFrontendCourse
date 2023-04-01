@@ -15,3 +15,7 @@ export {
 export {
   type ArticleSchema
 } from './model/types/ArticleSchema';
+
+export {
+  ArticleView
+} from './model/types/ArticleViewTypes';
