@@ -1,7 +1,6 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import styles from './ArticleTextBlockComponent.module.scss';
 import { type FC } from 'react';
-import { useTranslation } from 'react-i18next';
 import { type ArticleTextBlock } from '../../../model/types/ArticleBlockTypes';
 import { UxText } from 'shared/ui/UxText/UxText';
 
@@ -12,7 +11,6 @@ interface ArticleTextBlockComponentProps {
 
 export const ArticleTextBlockComponent: FC<ArticleTextBlockComponentProps> = (props: ArticleTextBlockComponentProps) => {
   const { className, block } = props;
-  const { t } = useTranslation();
 
   return (
         <div className={classNames(styles.ArticleTextBlockComponent, {}, [className])}>
