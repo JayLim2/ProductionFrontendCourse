@@ -1,6 +1,7 @@
 .Sidebar {
-    height: calc(100vh - var(--navbar-height));
+    min-width: var(--sidebar-width);
     width: var(--sidebar-width);
+    height: calc(100vh - var(--navbar-height));
     background-color: var(--inverted-bg-color);
     position: relative;
     transition-property: width;

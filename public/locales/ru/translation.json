@@ -5,6 +5,8 @@
   "mainPageLinkTitle": "Главная",
   "aboutPageLinkTitle": "О сайте",
   "userProfilePageLinkTitle": "Профиль",
+  "listArticlesPageLinkTitle": "Список статей",
+  "articleDetailsPageLinkTitle": "Статья",
   "loadingText": "Загрузка...",
   "loginButton": "Войти",
   "logoutButton": "Выйти",

@@ -18,7 +18,7 @@ export const saveUserProfileData = createAsyncThunk<UserProfile, void, ThunkConf
     }
 
     try {
-      const response = await extra.api.put<UserProfile>('/profile', newData);
+      const response = await extra.api.put<UserProfile>(`/profiles/${newData?.id}`, newData);
       if (!response.data) {
         throw new Error('Empty response.');
       }

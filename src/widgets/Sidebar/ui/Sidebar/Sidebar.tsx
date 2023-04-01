@@ -4,8 +4,8 @@ import { memo, useState } from 'react'
 import { ButtonSize, ButtonTheme, UxButton } from 'shared/ui/UxButton/UxButton'
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher'
 import { LanguageSwitcher } from 'widgets/LanguageSwitcher'
-import { SidebarItemsList } from '../../model/SidebarItemType';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
+import { SidebarItemsList } from 'widgets/Sidebar/model/SidebarItemsList';
 
 interface SidebarProps {
   className?: string

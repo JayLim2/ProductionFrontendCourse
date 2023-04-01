@@ -21,6 +21,8 @@ import { Country } from 'entities/Country';
 import { TextTheme, UxText } from 'shared/ui/UxText/UxText';
 import { UserProfileValidationError } from 'entities/UserProfileEntity/model/types/UserProfileValidationError';
 import { useTranslation } from 'react-i18next';
+import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
+import { useParams } from 'react-router-dom';
 
 const reducers: ReducersList = {
   userProfile: userProfileReducer
@@ -40,6 +42,8 @@ const UserProfilePage: FC<UserProfilePageProps> = (props: UserProfilePageProps) 
   const error = useSelector(getUserProfileError);
   const isReadOnly = useSelector(getUserProfileReadonly);
 
+  const { id: profileId } = useParams<{ id: string }>();
+
   const validationErrors = useSelector(getUserProfileDataValidationError);
   const validationErrorsTranslations = {
     [UserProfileValidationError.EMPTY_FIRST_NAME]: t('validationErrorIncorrectFirstName'),
@@ -53,11 +57,11 @@ const UserProfilePage: FC<UserProfilePageProps> = (props: UserProfilePageProps) 
     [UserProfileValidationError.NO_USER_PROFILE_DATA]: t('validationErrorNoData')
   }
 
-  useEffect(() => {
-    if (__PROJECT__ !== 'storybook') {
-      void dispatch(fetchUserProfileData());
+  useInitialEffect(() => {
+    if (profileId) {
+      void dispatch(fetchUserProfileData(profileId));
     }
-  }, [dispatch]);
+  });
 
   const onChangeFirstName = useCallback((newValue?: string) => {
     dispatch(userProfileActions.updateUserProfile({
@@ -111,9 +115,7 @@ const UserProfilePage: FC<UserProfilePageProps> = (props: UserProfilePageProps) 
   }, [dispatch]);
 
   return (
-        <DynamicModuleLoader reducers={reducers}
-                             removeAfterUnmount={true}
-        >
+        <DynamicModuleLoader reducers={reducers}>
             <div className={classNames(styles.UserProfilePage, {}, [className])}>
                 <UserProfileHeader/>
                 {validationErrors?.length && validationErrors.map((validationError: UserProfileValidationError) => (

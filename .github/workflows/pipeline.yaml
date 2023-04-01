@@ -2,7 +2,7 @@ name: main-pipeline
 run-name: ${{ github.actor }} is learning GitHub Actions
 on:
   push:
-    branches: [ main, week-5, week-6, week-7 ]
+    branches: [ main, week-7, week-8, week-9 ]
   pull_request:
     branches: [ main ]
 jobs:
