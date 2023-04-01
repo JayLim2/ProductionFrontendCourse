@@ -5,15 +5,41 @@ import { ArticleDetails } from 'entities/Article';
 import { useParams } from 'react-router-dom';
 import { TextTheme, UxText } from 'shared/ui/UxText/UxText';
 import { useTranslation } from 'react-i18next';
+import { CommentList } from 'entities/Comment';
+import { DynamicModuleLoader, type ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { articleCommentsReducer, getArticleComments } from '../../model/slice/ArticleCommentsSlice';
+import { useSelector } from 'react-redux';
+import {
+  getArticleCommentsError,
+  getArticleCommentsIsLoading
+} from '../../model/selectors/CommentsSelectors';
+import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
+import {
+  fetchCommentsByArticleId
+} from '../../model/services/FetchCommentsByArticleId/FetchCommentsByArticleId';
+import { useTypedDispatch } from 'shared/lib/hooks/useTypedDispatch/useTypedDispatch';
 
 interface ArticlePageProps {
   className?: string
+}
+
+const reducersList: ReducersList = {
+  articleComments: articleCommentsReducer
 }
 
 const ArticlePage: FC<ArticlePageProps> = (props: ArticlePageProps) => {
   const { className } = props;
   const { id } = useParams<{ id: string }>();
   const { t } = useTranslation('article');
+
+  const dispatch = useTypedDispatch();
+  const comments = useSelector(getArticleComments.selectAll);
+  const isLoading = useSelector(getArticleCommentsIsLoading);
+  const error = useSelector(getArticleCommentsError);
+
+  useInitialEffect(() => {
+    void dispatch(fetchCommentsByArticleId(id));
+  });
 
   if (!id) {
     // TODO never happens
@@ -27,9 +53,18 @@ const ArticlePage: FC<ArticlePageProps> = (props: ArticlePageProps) => {
   }
 
   return (
-        <div className={classNames(styles.ArticlePage, {}, [className])}>
-          <ArticleDetails id={id}/>
-        </div>
+        <DynamicModuleLoader reducers={reducersList}
+                             removeAfterUnmount={true}
+        >
+            <div className={classNames(styles.ArticlePage, {}, [className])}>
+                <ArticleDetails id={id}/>
+                <UxText className={styles.commentTitle} title={t('commentsSectionHeader')} />
+                <CommentList
+                    isLoading={isLoading}
+                    comments={comments}
+                />
+            </div>
+        </DynamicModuleLoader>
   );
 };
 

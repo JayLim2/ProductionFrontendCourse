@@ -26,14 +26,14 @@
     {
       "id": "2",
       "text": "some comment 2",
-      "articleId": "1",
+      "articleId": "2",
       "userId": "1"
     },
     {
       "id": "3",
       "text": "some comment 3",
       "articleId": "1",
-      "userId": "1"
+      "userId": "2"
     }
   ],
   "profile": {
@@ -48,9 +48,18 @@
   },
   "users": [
     {
-      "id": "aba-caba-yama-lalalala",
+      "id": "1",
       "username": "admin",
-      "password": "123"
+      "password": "123",
+      "role": "ADMIN",
+      "avatar": "https://mobimg.b-cdn.net/v3/fetch/e6/e657039ab026c9a0c7ee84d02825fd7b.jpeg"
+    },
+    {
+      "id": "2",
+      "username": "user",
+      "password": "123",
+      "role": "USER",
+      "avatar": "https://i.pinimg.com/originals/e0/0b/39/e00b3984a9ac4131a02ded40761ad89b.jpg"
     }
   ],
   "articles": [

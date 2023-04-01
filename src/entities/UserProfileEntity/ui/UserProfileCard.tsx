@@ -2,7 +2,7 @@ import { classNames, type Modifiers } from 'shared/lib/classNames/classNames';
 import styles from './UserProfileCard.module.scss';
 import { type FC } from 'react';
 import { useTranslation } from 'react-i18next';
-import { TextTheme, UxText } from 'shared/ui/UxText/UxText';
+import { AlignText, TextTheme, UxText } from 'shared/ui/UxText/UxText';
 import { UxInput } from 'shared/ui/UxInput/UxInput';
 import { type UserProfile } from 'entities/UserProfileEntity';
 import { UxLoader } from 'shared/ui/UxLoader/UxLoader';
@@ -71,8 +71,8 @@ export const UserProfileCard: FC<UserProfileCardProps> = (props: UserProfileCard
                 <UxText theme={TextTheme.ERROR}
                         title={t('userProfileLoadingErrorTitle')}
                         text={t('userProfileLoadingErrorText')}
-                        alignTitle='center'
-                        alignText='center'
+                        alignTitle={AlignText.CENTER}
+                        alignText={AlignText.CENTER}
                 />
             </div>
     )

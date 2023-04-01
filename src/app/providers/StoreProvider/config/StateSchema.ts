@@ -12,6 +12,7 @@ import {
 import { type AxiosInstance } from 'axios';
 import { type NavigateToFunction } from 'app/providers/StoreProvider/config/Store';
 import { type ArticleSchema } from 'entities/Article';
+import { type ArticleCommentsSchema } from 'pages/ArticlePage';
 
 export interface StateSchema {
   counter: CounterSchema
@@ -21,6 +22,7 @@ export interface StateSchema {
   authForm?: AuthSchema
   userProfile?: UserProfileSchema
   article?: ArticleSchema
+  articleComments?: ArticleCommentsSchema
 }
 
 export type StateSchemaKey = keyof StateSchema;
