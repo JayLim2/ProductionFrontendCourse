@@ -11,6 +11,7 @@ import {
 } from '@reduxjs/toolkit';
 import { type AxiosInstance } from 'axios';
 import { type NavigateToFunction } from 'app/providers/StoreProvider/config/Store';
+import { type ArticleSchema } from 'entities/Article';
 
 export interface StateSchema {
   counter: CounterSchema
@@ -19,6 +20,7 @@ export interface StateSchema {
   // Async Reducers
   authForm?: AuthSchema
   userProfile?: UserProfileSchema
+  article?: ArticleSchema
 }
 
 export type StateSchemaKey = keyof StateSchema;

@@ -10,6 +10,11 @@ export enum TextTheme {
 
 type AlignText = 'left' | 'center' | 'right';
 
+export enum TextSize {
+  M = 'size_medium',
+  L = 'size_large'
+}
+
 interface UxTextProps {
   className?: string
   title?: string
@@ -17,6 +22,7 @@ interface UxTextProps {
   theme?: TextTheme
   alignTitle?: AlignText
   alignText?: AlignText
+  size?: TextSize
 }
 
 export const UxText: FC<UxTextProps> = memo((props: UxTextProps) => {
@@ -26,11 +32,13 @@ export const UxText: FC<UxTextProps> = memo((props: UxTextProps) => {
     text,
     theme = Theme.DEFAULT,
     alignTitle = 'left',
-    alignText = 'left'
+    alignText = 'left',
+    size = TextSize.M
   } = props;
 
   const modifiers: Modifiers = {
-    [styles[theme]]: true
+    [styles[theme]]: true,
+    [styles[size]]: true
   };
 
   return (
