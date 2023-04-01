@@ -34,18 +34,44 @@
       "text": "some comment 3",
       "articleId": "1",
       "userId": "2"
+    },
+    {
+      "articleId": "1",
+      "userId": "1",
+      "text": "test 1234",
+      "id": "c8bcdAS"
+    },
+    {
+      "articleId": "1",
+      "userId": "2",
+      "text": "test 5555",
+      "id": "-NFcif3"
     }
   ],
-  "profile": {
-    "firstName": "Sergei",
-    "lastName": "Komarov",
-    "age": 22,
-    "currency": "USD",
-    "country": "China",
-    "city": "Samara 1",
-    "username": "Komaroff",
-    "avatar": "https://d.radikal.host/2023/03/22/my_avatar.jpg"
-  },
+  "profiles": [
+    {
+      "id": "1",
+      "firstName": "Sergei",
+      "lastName": "Komarov",
+      "age": 22,
+      "currency": "RUB",
+      "country": "China",
+      "city": "Samara",
+      "username": "Komaroff",
+      "avatar": "https://d.radikal.host/2023/03/22/my_avatar.jpg"
+    },
+    {
+      "id": "2",
+      "firstName": "Ted",
+      "lastName": "Mosby",
+      "age": 30,
+      "currency": "USD",
+      "country": "USA",
+      "city": "New York",
+      "username": "_DoctorX_",
+      "avatar": "https://images.desimartini.com/media/uploads/2018-5/josh_radnor1.jpg"
+    }
+  ],
   "users": [
     {
       "id": "1",
@@ -70,7 +96,9 @@
       "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
       "views": 1022,
       "createdAt": "26.02.2022",
-      "type": ["IT"],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "1",

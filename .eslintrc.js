@@ -35,6 +35,7 @@ module.exports = {
     "react-hooks/exhaustive-deps": "error", // Checks effect dependencies,
     "@typescript-eslint/no-dynamic-delete": "off",
     "react/display-name": "off",
-    "@typescript-eslint/no-invalid-void-type": "warn"
+    "@typescript-eslint/no-invalid-void-type": "warn",
+    "@typescript-eslint/restrict-template-expressions": "off"
   }
 };

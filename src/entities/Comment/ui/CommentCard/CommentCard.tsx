@@ -6,10 +6,12 @@ import { UxSkeleton } from 'shared/ui/UxSkeleton/UxSkeleton';
 import styles from './CommentCard.module.scss';
 import { type Comment } from '../../model/types/Comment';
 import { useTranslation } from 'react-i18next';
+import { UxLink } from 'shared/ui/UxLink/UxLink';
+import { RoutePath } from 'app/providers/router/config/routeConfig';
 
 interface CommentCardProps {
   className?: string
-  comment: Comment
+  comment?: Comment
   isLoading?: boolean
 }
 
@@ -20,7 +22,7 @@ export const CommentCard = memo((props: CommentCardProps) => {
 
   if (isLoading) {
     return (
-            <div className={classNames(styles.CommentCard, {}, [className])}>
+            <div className={classNames(styles.CommentCard, {}, [className, styles.loading])}>
                 <div className={styles.header}>
                     <UxSkeleton width={30} height={30} border="50%" />
                     <UxSkeleton height={16} width={100} className={styles.username} />
@@ -43,12 +45,14 @@ export const CommentCard = memo((props: CommentCardProps) => {
 
   return (
         <div className={classNames(styles.CommentCard, {}, [className])}>
-            <div className={styles.header}>
+            <UxLink to={`${RoutePath.userProfile}${comment?.user?.id}`}
+                    className={styles.header}
+            >
                 {userAvatar}
                 <UxText className={styles.username}
                         title={comment?.user?.username}
                 />
-            </div>
+            </UxLink>
             <UxText className={styles.text}
                     text={comment?.text}
             />

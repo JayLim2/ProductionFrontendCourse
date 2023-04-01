@@ -1,6 +1,6 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import styles from './ArticlePage.module.scss';
-import { type FC, memo } from 'react';
+import { type FC, memo, useCallback } from 'react';
 import { ArticleDetails } from 'entities/Article';
 import { useParams } from 'react-router-dom';
 import { TextTheme, UxText } from 'shared/ui/UxText/UxText';
@@ -18,6 +18,8 @@ import {
   fetchCommentsByArticleId
 } from '../../model/services/FetchCommentsByArticleId/FetchCommentsByArticleId';
 import { useTypedDispatch } from 'shared/lib/hooks/useTypedDispatch/useTypedDispatch';
+import { AddCommentForm } from 'features/AddCommentForm';
+import { addCommentForArticle } from '../../model/services/AddCommentForArticle/AddCommentForArticle';
 
 interface ArticlePageProps {
   className?: string
@@ -41,6 +43,10 @@ const ArticlePage: FC<ArticlePageProps> = (props: ArticlePageProps) => {
     void dispatch(fetchCommentsByArticleId(id));
   });
 
+  const onSendComment = useCallback((text: string) => {
+    void dispatch(addCommentForArticle(text));
+  }, [dispatch]);
+
   if (!id) {
     // TODO never happens
     return (
@@ -53,12 +59,11 @@ const ArticlePage: FC<ArticlePageProps> = (props: ArticlePageProps) => {
   }
 
   return (
-        <DynamicModuleLoader reducers={reducersList}
-                             removeAfterUnmount={true}
-        >
+        <DynamicModuleLoader reducers={reducersList}>
             <div className={classNames(styles.ArticlePage, {}, [className])}>
                 <ArticleDetails id={id}/>
                 <UxText className={styles.commentTitle} title={t('commentsSectionHeader')} />
+                <AddCommentForm onSendComment={onSendComment} />
                 <CommentList
                     isLoading={isLoading}
                     comments={comments}

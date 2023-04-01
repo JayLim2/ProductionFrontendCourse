@@ -1,3 +1,5 @@
 {
-  "commentsListEmpty": "No comments."
+  "commentsListEmpty": "No comments.",
+  "inputNewCommentTextField": "Type comment",
+  "submitNewCommentButton": "Submit"
 }

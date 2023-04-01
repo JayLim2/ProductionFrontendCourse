@@ -4,6 +4,7 @@ import { type UserProfile } from 'entities/UserProfileEntity';
 import { UserProfileValidationError } from 'entities/UserProfileEntity/model/types/UserProfileValidationError';
 
 const userProfileValue = {
+  id: '1',
   firstName: 'Sergei NEW',
   lastName: 'Komarov NEW',
   age: 22,

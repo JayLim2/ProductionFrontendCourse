@@ -5,11 +5,13 @@ import { UxText } from 'shared/ui/UxText/UxText';
 import { ButtonTheme, UxButton } from 'shared/ui/UxButton/UxButton';
 import { useSelector } from 'react-redux';
 import {
+  getUserProfileData,
   getUserProfileReadonly,
   saveUserProfileData,
   userProfileActions
 } from 'entities/UserProfileEntity';
 import { useTypedDispatch } from 'shared/lib/hooks/useTypedDispatch/useTypedDispatch';
+import { getUserAuthData } from 'entities/UserEntity';
 
 interface UserProfileHeaderProps {
   className?: string
@@ -18,7 +20,12 @@ interface UserProfileHeaderProps {
 export const UserProfileHeader: FC<UserProfileHeaderProps> = (props: UserProfileHeaderProps) => {
   const { t } = useTranslation('userProfilePage');
 
+  const authData = useSelector(getUserAuthData);
+  const userProfileData = useSelector(getUserProfileData);
   const isReadOnly = useSelector(getUserProfileReadonly);
+
+  const editIsEnabled = authData?.id && userProfileData?.id &&
+      authData.id === userProfileData.id;
 
   const dispatch = useTypedDispatch();
   const onEdit = useCallback(() => {
@@ -60,13 +67,14 @@ export const UserProfileHeader: FC<UserProfileHeaderProps> = (props: UserProfile
   return (
         <div className={styles.UserProfileHeader}>
             <UxText title={t('userProfilePageTitle')} />
-            {isReadOnly
-              ? editButtonJsx
-              : (<>
-                    {saveButtonJsx}
-                    {cancelButtonJsx}
-                </>)
-            }
+            {editIsEnabled && (
+              isReadOnly
+                ? editButtonJsx
+                : (<>
+                        {saveButtonJsx}
+                        {cancelButtonJsx}
+                    </>)
+            )}
         </div>
   );
 };

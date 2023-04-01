@@ -1,3 +1,5 @@
 {
-  "commentsListEmpty": "Комментариев нет."
+  "commentsListEmpty": "Комментариев нет.",
+  "inputNewCommentTextField": "Введите комментарий",
+  "submitNewCommentButton": "Отправить"
 }
