@@ -4,7 +4,7 @@ const ArticlePageLazy = lazy<FC<any>>(async () => await new Promise((resolve) =>
   // FIXME ONLY FOR LEARNING
   setTimeout(() => {
     resolve(import('./ArticlePage'))
-  }, 1000)
+  }, 300)
 }))
 
 export default ArticlePageLazy

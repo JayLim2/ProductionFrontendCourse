@@ -4,7 +4,7 @@ const ListArticlesPageLazy = lazy<FC<any>>(async () => await new Promise((resolv
   // FIXME ONLY FOR LEARNING
   setTimeout(() => {
     resolve(import('./ListArticlesPage'))
-  }, 1000)
+  }, 300)
 }))
 
 export default memo(ListArticlesPageLazy);

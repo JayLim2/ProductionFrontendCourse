@@ -14,7 +14,7 @@ import {
 import { getArticles, listArticlesPageActions, listArticlesPageReducer } from '../../model/slice/ListArticlesPageSlice';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { DynamicModuleLoader, type ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { UxPage } from 'shared/ui/UxPage/UxPage';
+import { UxPage } from 'widgets/UxPage/UxPage';
 import { fetchNextArticlesPage } from '../../model/services/FetchNextArticlesPage/FetchNextArticlesPage';
 import { initListArticlesPage } from 'pages/ListArticlesPage/model/services/InitListArticlesPage/InitListArticlesPage';
 
@@ -48,7 +48,7 @@ const ListArticlesPage: FC<ListArticlesPageProps> = (props: ListArticlesPageProp
   }, [dispatch]);
 
   return (
-      <DynamicModuleLoader reducers={reducersList}>
+      <DynamicModuleLoader reducers={reducersList} removeAfterUnmount={false}>
         <UxPage className={classNames(styles.ListArticlesPage, {}, [className])}
                 onScrollEnd={onLoadNextPart}
         >

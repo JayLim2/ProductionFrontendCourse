@@ -15,10 +15,12 @@ import { type ArticleSchema } from 'entities/Article';
 import { type ArticleCommentsSchema } from 'pages/ArticlePage';
 import { type AddCommentFormSchema } from 'features/AddCommentForm/model/types/AddCommentFormSchema';
 import { type ListArticlesSchema } from 'pages/ListArticlesPage';
+import { type ScrollPositionSchema } from 'features/ScrollPositionRestoring';
 
 export interface StateSchema {
   counter: CounterSchema
   user: UserSchema
+  scrollPosition: ScrollPositionSchema
 
   // Async Reducers
   authForm?: AuthSchema

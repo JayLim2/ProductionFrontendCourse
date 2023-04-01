@@ -6,6 +6,7 @@ import { createReducerManager } from './ReducerManager';
 import { $api } from 'shared/api/api';
 import { type To } from 'react-router-dom';
 import { type NavigateOptions } from 'react-router';
+import { scrollPositionReducer } from 'features/ScrollPositionRestoring';
 
 export type NavigateToFunction = (to: To, options?: NavigateOptions) => void;
 
@@ -17,7 +18,8 @@ export function createReduxStore(
   const rootReducers: ReducersMapObject<StateSchema> = {
     ...asyncReducers,
     counter: counterReducer,
-    user: userReducer
+    user: userReducer,
+    scrollPosition: scrollPositionReducer
   };
 
   const reducerManager = createReducerManager(rootReducers);

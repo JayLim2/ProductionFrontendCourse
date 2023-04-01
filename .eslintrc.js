@@ -36,6 +36,7 @@ module.exports = {
     "@typescript-eslint/no-dynamic-delete": "off",
     "react/display-name": "off",
     "@typescript-eslint/no-invalid-void-type": "warn",
-    "@typescript-eslint/restrict-template-expressions": "off"
+    "@typescript-eslint/restrict-template-expressions": "off",
+    "n/no-callback-literal": "off"
   }
 };
