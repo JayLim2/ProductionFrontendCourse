@@ -2,11 +2,11 @@ import { type ArticleBlock } from './ArticleBlockTypes';
 import { type User } from 'entities/UserEntity';
 
 export enum ArticleType {
+  ALL = 'ALL',
   IT = 'IT',
   SCIENCE = 'SCIENCE',
   ECONOMICS = 'ECONOMICS'
 }
-
 export interface Article {
   id: string
   user: User

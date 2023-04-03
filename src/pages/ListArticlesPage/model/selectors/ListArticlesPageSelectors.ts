@@ -1,5 +1,7 @@
 import { type StateSchema } from 'app/providers/StoreProvider';
-import { ArticleView } from 'entities/Article';
+import { ArticleType, ArticleView } from 'entities/Article';
+import { SortOrder } from 'shared/types/FilterPanelTypes';
+import { ArticleSortField } from 'entities/Article/model/types/ArticleFilterPanelTypes';
 
 export const getArticlesPageIsLoading = (state: StateSchema): boolean => {
   return state.listArticles?.isLoading || false;
@@ -28,3 +30,18 @@ export const getArticlesPageHasMore = (state: StateSchema): boolean => {
 export const getArticlesPageInitialized = (state: StateSchema): boolean => {
   return state.listArticles?._initialized || false;
 }
+
+// Filters panel
+
+export const getArticlesPageSortOrder = (state: StateSchema): SortOrder => {
+  return state.listArticles?.sortOrder ?? SortOrder.ASC;
+};
+export const getArticlesPageSortField = (state: StateSchema): ArticleSortField => {
+  return state.listArticles?.sortField ?? ArticleSortField.CREATED;
+};
+export const getArticlesPageSearchQuery = (state: StateSchema): string => {
+  return state.listArticles?.searchQuery ?? '';
+};
+export const getArticlesPageArticleType = (state: StateSchema): ArticleType => {
+  return state.listArticles?.articleType ?? ArticleType.ALL;
+};

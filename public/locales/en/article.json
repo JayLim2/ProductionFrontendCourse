@@ -3,5 +3,6 @@
   "articleLoadingErrorTitle": "Article is not found or cannot be loaded",
   "commentsSectionHeader": "Comments",
   "readMoreButton": "Read More",
-  "backToArticlesCatalogue": "Back to Catalogue"
+  "backToArticlesCatalogue": "Back to Catalogue",
+  "notFoundText": "Articles are not found"
 }

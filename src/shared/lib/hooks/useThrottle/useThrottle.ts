@@ -1,8 +1,7 @@
 import { useCallback, useRef } from 'react';
+import { type Callback } from 'shared/lib/hooks/types/VoidCallback';
 
-type Callback = (...args: any[]) => void;
-
-export function useThrottle(callback: Callback, delay: number): Callback {
+export function useThrottle(callback: Callback<void>, delay: number): Callback<void> {
   const throttleRef = useRef(false);
 
   return useCallback((...args: any[]) => {
