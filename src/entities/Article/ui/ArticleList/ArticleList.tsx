@@ -1,5 +1,5 @@
 import { classNames } from 'shared/lib/classNames/classNames';
-import { memo, type ReactNode } from 'react';
+import { type HTMLAttributeAnchorTarget, memo, type ReactNode } from 'react';
 import { ArticleListItemSkeleton } from 'entities/Article/ui/ArticleListItem/ArticleListItemSkeleton';
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
 import styles from './ArticleList.module.scss';
@@ -13,6 +13,7 @@ interface ArticleListProps {
   articles: Article[]
   isLoading?: boolean
   view?: ArticleView
+  target?: HTMLAttributeAnchorTarget
 }
 
 const getSkeletons = (view: ArticleView): ReactNode[] =>
@@ -31,7 +32,8 @@ export const ArticleList = memo((props: ArticleListProps) => {
     className,
     articles,
     view = ArticleView.SMALL,
-    isLoading
+    isLoading,
+    target
   } = props;
 
   const { t } = useTranslation('article');
@@ -42,6 +44,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
             view={view}
             className={styles.card}
             key={article.id}
+            target={target}
         />
   );
 

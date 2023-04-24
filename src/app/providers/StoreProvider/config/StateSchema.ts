@@ -12,10 +12,10 @@ import {
 import { type AxiosInstance } from 'axios';
 import { type NavigateToFunction } from 'app/providers/StoreProvider/config/Store';
 import { type ArticleSchema } from 'entities/Article';
-import { type ArticleCommentsSchema } from 'pages/ArticlePage';
 import { type AddCommentFormSchema } from 'features/AddCommentForm/model/types/AddCommentFormSchema';
 import { type ListArticlesSchema } from 'pages/ListArticlesPage';
 import { type ScrollPositionSchema } from 'features/ScrollPositionRestoring';
+import { type ArticlePageSchema } from 'pages/ArticlePage';
 
 export interface StateSchema {
   counter: CounterSchema
@@ -26,7 +26,7 @@ export interface StateSchema {
   authForm?: AuthSchema
   userProfile?: UserProfileSchema
   article?: ArticleSchema
-  articleComments?: ArticleCommentsSchema
+  articlePage?: ArticlePageSchema
   addCommentForm?: AddCommentFormSchema
   listArticles?: ListArticlesSchema
 }

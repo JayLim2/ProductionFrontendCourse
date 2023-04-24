@@ -2,6 +2,7 @@
   "articleIdNotDefined": "ID статьи не определен. Убедитесь, что URL корректный",
   "articleLoadingErrorTitle": "Статья не найдена или не может быть загружена",
   "commentsSectionHeader": "Комментарии",
+  "recommendationsSectionHeader": "Рекомендуем",
   "readMoreButton": "Читать полностью",
   "backToArticlesCatalogue": "Назад в каталог статей",
   "notFoundText": "Статьи не найдены"

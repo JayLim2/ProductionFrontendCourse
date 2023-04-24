@@ -1,6 +1,6 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import { memo, useCallback } from 'react';
+import { type HTMLAttributeAnchorTarget, memo, useCallback } from 'react';
 import { UxText } from 'shared/ui/UxText/UxText';
 import { UxIcon } from 'shared/ui/UxIcon/UxIcon';
 import EyeIcon from 'shared/assets/icons/eye-20-20.svg';
@@ -20,15 +20,17 @@ import {
 import {
   ArticleTextBlockComponent
 } from '../ArticleBlockComponents/ArticleTextBlockComponent/ArticleTextBlockComponent';
+import { UxLink } from 'shared/ui/UxLink/UxLink';
 
 interface ArticleListItemProps {
   className?: string
   article: Article
   view: ArticleView
+  target?: HTMLAttributeAnchorTarget
 }
 
 export const ArticleListItem = memo((props: ArticleListItemProps) => {
-  const { className, article, view } = props;
+  const { className, article, view, target } = props;
   const { t } = useTranslation('article');
   const navigate = useNavigate();
 
@@ -67,9 +69,14 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
                         <ArticleTextBlockComponent block={textBlock} className={styles.textBlock} />
                     )}
                     <div className={styles.footer}>
-                        <UxButton onClick={onOpenArticle} theme={ButtonTheme.OUTLINE}>
-                            {t('readMoreButton')}
-                        </UxButton>
+                        <UxLink
+                            to={RoutePath.article + article.id}
+                            target={target}
+                        >
+                            <UxButton theme={ButtonTheme.OUTLINE}>
+                                {t('readMoreButton')}
+                            </UxButton>
+                        </UxLink>
                         {views}
                     </div>
                 </UxCard>
@@ -78,7 +85,11 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
   }
 
   return (
-        <div className={classNames(styles.ArticleListItem, {}, [className, styles[view]])}>
+        <UxLink
+            to={RoutePath.article + article.id}
+            target={target}
+            className={classNames(styles.ArticleListItem, {}, [className, styles[view]])}
+        >
             <UxCard className={styles.card} onClick={onOpenArticle}>
                 <div className={styles.imageWrapper}>
                     <img alt={article.title} src={article.img} className={styles.img} />
@@ -90,6 +101,6 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
                 </div>
                 <UxText text={article.title} className={styles.title} />
             </UxCard>
-        </div>
+        </UxLink>
   );
 });
