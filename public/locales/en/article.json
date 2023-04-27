@@ -5,5 +5,8 @@
   "recommendationsSectionHeader": "Recommendations",
   "readMoreButton": "Read More",
   "backToArticlesCatalogue": "Back to Catalogue",
-  "notFoundText": "Articles are not found"
+  "notFoundText": "Articles are not found",
+  "editArticleButton": "Edit",
+  "editArticleById": "Edit Article by ID = ",
+  "createArticle": "New Article"
 }

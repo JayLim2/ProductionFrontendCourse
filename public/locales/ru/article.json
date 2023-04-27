@@ -5,5 +5,8 @@
   "recommendationsSectionHeader": "Рекомендуем",
   "readMoreButton": "Читать полностью",
   "backToArticlesCatalogue": "Назад в каталог статей",
-  "notFoundText": "Статьи не найдены"
+  "notFoundText": "Статьи не найдены",
+  "editArticleButton": "Редактировать",
+  "editArticleById": "Редактировать статью с ID = ",
+  "createArticle": "Новая статья"
 }

@@ -6,6 +6,9 @@ import { useTranslation } from 'react-i18next';
 import { LoginModal } from 'features/AuthByUsernameFeature';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserAuthData, userActions } from 'entities/UserEntity';
+import { AlignText, TextTheme, UxText } from 'shared/ui/UxText/UxText';
+import { UxLink, UxLinkTheme } from 'shared/ui/UxLink/UxLink';
+import { RoutePath } from 'app/providers/router/config/routeConfig';
 
 interface NavigationBarProps {
   className?: string
@@ -32,34 +35,52 @@ export const NavigationBar = memo((props: NavigationBarProps) => {
     dispatch(userActions.logout());
   }, [dispatch]);
 
+  const appTitle = (
+      <UxText
+          className={styles.appName}
+          title={t('appTitle')}
+          theme={TextTheme.INVERTED}
+          alignTitle={AlignText.CENTER}
+      />
+  );
+
   if (authData) {
     return (
-      <div className={classNames(styles.NavigationBar, {}, [className])}>
-        <UxButton className={styles.links}
-                  theme={ButtonTheme.CLEAR_INVERTED}
-                  size={ButtonSize.M}
-                  onClick={onClickLogoutButton}
-        >
-          {t('logoutButton')}
-        </UxButton>
-      </div>
+            <div className={classNames(styles.NavigationBar, {}, [className])}>
+                {appTitle}
+                <UxLink
+                    to={RoutePath.article_create}
+                    theme={UxLinkTheme.SECONDARY}
+                    className={styles.createBtn}
+                >
+                    {t('addArticleButton')}
+                </UxLink>
+                <UxButton className={styles.links}
+                          theme={ButtonTheme.CLEAR_INVERTED}
+                          size={ButtonSize.M}
+                          onClick={onClickLogoutButton}
+                >
+                    {t('logoutButton')}
+                </UxButton>
+            </div>
     )
   } else {
     return (
-      <div className={classNames(styles.NavigationBar, {}, [className])}>
-        <UxButton className={styles.links}
-                  theme={ButtonTheme.CLEAR_INVERTED}
-                  size={ButtonSize.M}
-                  onClick={onClickLoginButton}
-        >
-          {t('loginButton')}
-        </UxButton>
-        {isAuthModalVisible && (
-          <LoginModal isOpen={isAuthModalVisible}
-                      onClose={onClickOutsideAuthModal}
-          />
-        )}
-      </div>
+            <div className={classNames(styles.NavigationBar, {}, [className])}>
+                {appTitle}
+                <UxButton className={styles.links}
+                          theme={ButtonTheme.CLEAR_INVERTED}
+                          size={ButtonSize.M}
+                          onClick={onClickLoginButton}
+                >
+                    {t('loginButton')}
+                </UxButton>
+                {isAuthModalVisible && (
+                    <LoginModal isOpen={isAuthModalVisible}
+                                onClose={onClickOutsideAuthModal}
+                    />
+                )}
+            </div>
     )
   }
 });

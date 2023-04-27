@@ -25,6 +25,10 @@ export {
 } from './model/types/ArticleFilterPanelTypes';
 
 export {
+  getArticleDetailsData
+} from './model/selectors/GetArticleDetailsData/GetArticleDetailsData'
+
+export {
   ArticleSortSelector
 } from './ui/ArticleSortSelector/ArticleSortSelector';
 

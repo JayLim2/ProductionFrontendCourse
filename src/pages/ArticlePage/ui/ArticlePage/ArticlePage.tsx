@@ -2,7 +2,7 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import styles from './ArticlePage.module.scss';
 import { type FC, memo, useCallback } from 'react';
 import { ArticleDetails } from 'entities/Article';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { TextSize, TextTheme, UxText } from 'shared/ui/UxText/UxText';
 import { useTranslation } from 'react-i18next';
 import { CommentList } from 'entities/Comment';
@@ -20,8 +20,6 @@ import {
 import { useTypedDispatch } from 'shared/lib/hooks/useTypedDispatch/useTypedDispatch';
 import { AddCommentForm } from 'features/AddCommentForm';
 import { addCommentForArticle } from '../../model/services/AddCommentForArticle/AddCommentForArticle';
-import { ButtonTheme, UxButton } from 'shared/ui/UxButton/UxButton';
-import { RoutePath } from 'app/providers/router/config/routeConfig';
 import { UxPage } from 'widgets/UxPage/UxPage';
 import { ArticleList } from 'entities/Article/ui/ArticleList/ArticleList';
 import { getArticleRecommendations } from '../../model/slice/ArticleRecommendationsSlice';
@@ -30,6 +28,7 @@ import { getArticleRecommendationsIsLoading } from '../../model/selectors/Recomm
 import {
   fetchArticleRecommendations
 } from 'pages/ArticlePage/model/services/FetchArticleRecommendations/FetchArticleRecommendations';
+import { ArticlePageHeader } from '../ArticlePageHeader/ArticlePageHeader';
 
 interface ArticlePageProps {
   className?: string
@@ -50,16 +49,11 @@ const ArticlePage: FC<ArticlePageProps> = (props: ArticlePageProps) => {
   const commentsIsLoading = useSelector(getArticleCommentsIsLoading);
   const recommendationsIsLoading = useSelector(getArticleRecommendationsIsLoading);
   // const error = useSelector(getArticleCommentsError);
-  const navigate = useNavigate();
 
   useInitialEffect(() => {
     void dispatch(fetchCommentsByArticleId(id));
     void dispatch(fetchArticleRecommendations());
   });
-
-  const onBackToList = useCallback(() => {
-    navigate(RoutePath.articles);
-  }, [navigate]);
 
   const onSendComment = useCallback((text: string) => {
     void dispatch(addCommentForArticle(text));
@@ -79,11 +73,7 @@ const ArticlePage: FC<ArticlePageProps> = (props: ArticlePageProps) => {
   return (
         <DynamicModuleLoader reducers={reducersList} removeAfterUnmount={false}>
             <UxPage className={classNames(styles.ArticlePage, {}, [className])}>
-                <UxButton theme={ButtonTheme.OUTLINE}
-                          onClick={onBackToList}
-                >
-                    {t('backToArticlesCatalogue')}
-                </UxButton>
+                <ArticlePageHeader />
                 <ArticleDetails id={id}/>
                 <UxText
                     size={TextSize.L}

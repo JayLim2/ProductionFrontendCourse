@@ -5,6 +5,7 @@ import { Theme } from 'app/providers/ThemeProvider';
 
 export enum TextTheme {
   DEFAULT = 'default',
+  INVERTED = 'inverted',
   ERROR = 'error'
 }
 
