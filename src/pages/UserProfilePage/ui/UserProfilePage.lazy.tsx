@@ -3,12 +3,7 @@ import { type UserProfilePageProps } from './UserProfilePage'
 
 // UserProfilePage.lazy
 
-const UserProfilePageLazy = lazy<FC<UserProfilePageProps>>(async () => await new Promise((resolve) => {
-  // FIXME ONLY FOR LEARNING
-  setTimeout(() => {
-    resolve(import('./UserProfilePage'))
-  }, 1000)
-}))
+const UserProfilePageLazy = lazy<FC<UserProfilePageProps>>(async () => await import('./UserProfilePage'));
 
 export {
   UserProfilePageLazy as UserProfilePage

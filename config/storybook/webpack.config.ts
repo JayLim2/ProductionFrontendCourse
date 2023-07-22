@@ -14,9 +14,11 @@ export default (props: StorybookWebpackConfiguration): webpack.Configuration => 
 
   const paths: BuildPaths = {
     buildDir: '',
+    buildLocalizationDir: '',
     htmlEntrypoint: '',
     entrypoint: '',
-    srcDirectory: path.resolve(__dirname, '..', '..', 'src')
+    srcDirectory: path.resolve(__dirname, '..', '..', 'src'),
+    localizationDirectory: path.resolve(__dirname, '..', '..', 'public', 'locales')
   };
     // 19.03.23 Fixed bug with resolving absolute paths in Storybook ('Module not found' on CI)
   config.resolve?.modules?.unshift(paths.srcDirectory);
