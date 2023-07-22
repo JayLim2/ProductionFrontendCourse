@@ -1,0 +1,10 @@
+{
+  "sort.order.ascOption": "возрастания",
+  "sort.order.descOption": "убывания",
+  "sort.field.articleCreatedAt": "Дате создания",
+  "sort.field.articleTitle": "Названию",
+  "sort.field.articleViewsAmount": "Просмотрам",
+  "sort.control.sortField": "Сортировать по",
+  "sort.control.sortOrder": "в порядке",
+  "search.control.article": "Which article do you want to read?"
+}

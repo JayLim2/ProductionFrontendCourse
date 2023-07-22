@@ -2,9 +2,11 @@ export type BuildMode = 'production' | 'development'
 
 export interface BuildPaths {
   buildDir: string
+  buildLocalizationDir: string
   entrypoint: string
   htmlEntrypoint: string
   srcDirectory: string
+  localizationDirectory: string
 }
 
 export interface BuildOptions {

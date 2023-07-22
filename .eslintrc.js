@@ -28,7 +28,7 @@ module.exports = {
     'react/jsx-props-no-spreading': 'warn',
     'i18next/no-literal-string': ['error', {
       markupOnly: true,
-      ignoreAttribute: ["to", "className", "data-testid", "reducerKey", "alignTitle", "alignText"]
+      ignoreAttribute: ["to", "className", "data-testid", "reducerKey", "alignTitle", "alignText", "target"]
     }],
     '@typescript-eslint/space-before-function-paren': 'off',
     "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
@@ -36,6 +36,7 @@ module.exports = {
     "@typescript-eslint/no-dynamic-delete": "off",
     "react/display-name": "off",
     "@typescript-eslint/no-invalid-void-type": "warn",
-    "@typescript-eslint/restrict-template-expressions": "off"
+    "@typescript-eslint/restrict-template-expressions": "off",
+    "n/no-callback-literal": "off"
   }
 };

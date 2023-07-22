@@ -1,11 +1,11 @@
 import { type FC, type ReactNode, useEffect } from 'react';
 import { useDispatch, useStore } from 'react-redux';
-import { type ReduxStoreWithReducerManager } from 'app/providers/StoreProvider';
+import { type ReduxStoreWithReducerManager, type StateSchema } from 'app/providers/StoreProvider';
 import { type StateSchemaKey } from 'app/providers/StoreProvider/config/StateSchema';
 import { type Reducer } from '@reduxjs/toolkit';
 
 export type ReducersList = {
-  [reducerKey in StateSchemaKey]?: Reducer
+  [reducerKey in StateSchemaKey]?: Reducer<NonNullable<StateSchema[reducerKey]>>
 }
 
 export type ReducerListEntry = [StateSchemaKey, Reducer]
@@ -25,11 +25,17 @@ export const DynamicModuleLoader: FC<DynamicModuleLoaderProps> = (props: Dynamic
   const dispatch = useDispatch();
 
   useEffect(() => {
+    // TODO refactor it! this is duplicate!
+    const mountedReducers = store.reducerManager.getMountedReducers();
+
     Object.entries(reducersList).forEach(([reducerKey, reducer]) => {
-      store.reducerManager.add(reducerKey as StateSchemaKey, reducer);
-      dispatch({
-        type: `@INIT ${reducerKey}`
-      })
+      const isMounted = mountedReducers[reducerKey as StateSchemaKey];
+      if (!isMounted) {
+        store.reducerManager.add(reducerKey as StateSchemaKey, reducer);
+        dispatch({
+          type: `@INIT ${reducerKey}`
+        })
+      }
     })
 
     return () => {

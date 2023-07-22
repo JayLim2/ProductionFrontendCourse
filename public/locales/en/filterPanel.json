@@ -1,0 +1,10 @@
+{
+  "sort.order.ascOption": "ascending",
+  "sort.order.descOption": "descending",
+  "sort.field.articleCreatedAt": "Creation Date",
+  "sort.field.articleTitle": "Title",
+  "sort.field.articleViewsAmount": "Views",
+  "sort.control.sortField": "Sort by",
+  "sort.control.sortOrder": "Order by",
+  "search.control.article": "Which article do you want to read?"
+}

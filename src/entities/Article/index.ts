@@ -19,3 +19,23 @@ export {
 export {
   ArticleView
 } from './model/types/ArticleViewTypes';
+
+export {
+  ArticleSortField
+} from './model/types/ArticleFilterPanelTypes';
+
+export {
+  getArticleDetailsData
+} from './model/selectors/GetArticleDetailsData/GetArticleDetailsData'
+
+export {
+  ArticleSortSelector
+} from './ui/ArticleSortSelector/ArticleSortSelector';
+
+export {
+  ArticleTypeTabs
+} from './ui/ArticleTypeTabs/ArticleTypeTabs';
+
+export {
+  ArticleViewSelector
+} from './ui/ArticleViewSelector/ArticleViewSelector';

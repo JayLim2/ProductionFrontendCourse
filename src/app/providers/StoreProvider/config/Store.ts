@@ -6,19 +6,20 @@ import { createReducerManager } from './ReducerManager';
 import { $api } from 'shared/api/api';
 import { type To } from 'react-router-dom';
 import { type NavigateOptions } from 'react-router';
+import { scrollPositionReducer } from 'features/ScrollPositionRestoring';
 
 export type NavigateToFunction = (to: To, options?: NavigateOptions) => void;
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export function createReduxStore(
   initialState?: StateSchema,
-  asyncReducers?: ReducersMapObject<StateSchema>,
-  navigateFn?: NavigateToFunction
+  asyncReducers?: ReducersMapObject<StateSchema>
 ) {
   const rootReducers: ReducersMapObject<StateSchema> = {
     ...asyncReducers,
     counter: counterReducer,
-    user: userReducer
+    user: userReducer,
+    scrollPosition: scrollPositionReducer
   };
 
   const reducerManager = createReducerManager(rootReducers);
@@ -31,8 +32,7 @@ export function createReduxStore(
     middleware: (getDefaultMiddleware) => getDefaultMiddleware({
       thunk: {
         extraArgument: {
-          api: $api,
-          navigate: navigateFn
+          api: $api
         }
       }
     })

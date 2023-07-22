@@ -1,10 +1,5 @@
 import { type FC, lazy, memo } from 'react'
 
-const ListArticlesPageLazy = lazy<FC<any>>(async () => await new Promise((resolve) => {
-  // FIXME ONLY FOR LEARNING
-  setTimeout(() => {
-    resolve(import('./ListArticlesPage'))
-  }, 1000)
-}))
+const ListArticlesPageLazy = lazy<FC<any>>(async () => await import('./ListArticlesPage'));
 
 export default memo(ListArticlesPageLazy);

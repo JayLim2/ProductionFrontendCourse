@@ -7,3 +7,7 @@ export {
 export type {
   ArticleCommentsSchema
 } from './model/types/ArticleCommentsSchema'
+
+export type {
+  ArticlePageSchema
+} from './model/types'

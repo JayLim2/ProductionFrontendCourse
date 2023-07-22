@@ -2,8 +2,6 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import styles from './ListArticlesPage.module.scss';
 import { type FC, memo, useCallback } from 'react';
 import { ArticleList } from 'entities/Article/ui/ArticleList/ArticleList';
-import { type ArticleView } from 'entities/Article/model/types/ArticleViewTypes';
-import { ArticleViewSelector } from 'entities/Article/ui/ArticleViewSelector/ArticleViewSelector';
 import { useTypedDispatch } from 'shared/lib/hooks/useTypedDispatch/useTypedDispatch';
 import { useSelector } from 'react-redux';
 import {
@@ -11,12 +9,14 @@ import {
   getArticlesPageIsLoading,
   getArticlesPageView
 } from '../../model/selectors/ListArticlesPageSelectors';
-import { getArticles, listArticlesPageActions, listArticlesPageReducer } from '../../model/slice/ListArticlesPageSlice';
+import { getArticles, listArticlesPageReducer } from '../../model/slice/ListArticlesPageSlice';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
-import { fetchListArticles } from 'pages/ListArticlesPage/model/services/FetchListArticles/FetchListArticles';
 import { DynamicModuleLoader, type ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { UxPage } from 'shared/ui/UxPage/UxPage';
+import { UxPage } from 'widgets/UxPage/UxPage';
 import { fetchNextArticlesPage } from '../../model/services/FetchNextArticlesPage/FetchNextArticlesPage';
+import { initListArticlesPage } from '../../model/services/InitListArticlesPage/InitListArticlesPage';
+import { ArticlesPageFilters } from '../ListArticlesPageFilters/ArticlesPageFilters';
+import { useSearchParams } from 'react-router-dom';
 
 interface ListArticlesPageProps {
   className?: string
@@ -35,30 +35,24 @@ const ListArticlesPage: FC<ListArticlesPageProps> = (props: ListArticlesPageProp
   const view = useSelector(getArticlesPageView);
   // const error = useSelector(getArticlesPageError);
 
-  useInitialEffect(() => {
-    dispatch(listArticlesPageActions.initState());
-    void dispatch(fetchListArticles({
-      page: 1
-    }));
-  });
+  const [searchParams] = useSearchParams();
 
-  const onChangeView = useCallback((view: ArticleView) => {
-    dispatch(listArticlesPageActions.setView(view));
-  }, [dispatch]);
+  console.warn(searchParams.get('searchQuery'));
+
+  useInitialEffect(() => {
+    void dispatch(initListArticlesPage(searchParams));
+  });
 
   const onLoadNextPart = useCallback(() => {
     void dispatch(fetchNextArticlesPage());
   }, [dispatch]);
 
   return (
-      <DynamicModuleLoader reducers={reducersList}>
+      <DynamicModuleLoader reducers={reducersList} removeAfterUnmount={false}>
         <UxPage className={classNames(styles.ListArticlesPage, {}, [className])}
                 onScrollEnd={onLoadNextPart}
         >
-          <ArticleViewSelector
-              view={view}
-              onViewClick={onChangeView}
-          />
+          <ArticlesPageFilters />
           <ArticleList
               isLoading={isLoading}
               view={view}
